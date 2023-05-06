@@ -1,4 +1,4 @@
-# Tw2
+# Tw2 - Proyecto e-commerce
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
 
