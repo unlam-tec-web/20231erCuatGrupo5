@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router} from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.css']
 })
-export class LoginComponent {
+export class navComponent {
 constructor(private router:Router){}
 
 }
