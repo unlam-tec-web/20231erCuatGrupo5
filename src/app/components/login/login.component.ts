@@ -10,3 +10,5 @@ export class LoginComponent {
 constructor(private router:Router){}
 
 }
+
+
