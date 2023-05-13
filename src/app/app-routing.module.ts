@@ -7,7 +7,7 @@ import{PageNotFoundComponent}from './components/page-not-found/page-not-found.co
 
 //rutas de navegacion
 const routes: Routes = [
-    
+
   //nos redirige a la pagina principal
   { path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'registro', component: RegisterComponent},
     //ruta 404
   {path:'**',component:PageNotFoundComponent}
-  
+
   ];
 
   @NgModule({
