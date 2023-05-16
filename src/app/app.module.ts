@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -18,6 +20,7 @@ import { FooterComponent } from './components/footer/footer.component';
   declarations: [
     AppComponent,
     CartComponent,
+  
     HomeComponent,
     FooterComponent,
     HeaderComponent,
@@ -27,8 +30,11 @@ import { FooterComponent } from './components/footer/footer.component';
     PageNotFoundComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
-   AppRoutingModule 
+   AppRoutingModule,
+   HttpClientModule  
   ],
   providers: [],
   bootstrap: [AppComponent]
