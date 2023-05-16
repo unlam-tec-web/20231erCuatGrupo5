@@ -11,12 +11,16 @@ import { LoginComponent } from './components/login/login.component';
 import { ProductComponent } from './components/product/product.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import{HeaderComponent} from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CartComponent,
     HomeComponent,
+    FooterComponent,
+    HeaderComponent,
     LoginComponent,
     ProductComponent,
     RegisterComponent,
