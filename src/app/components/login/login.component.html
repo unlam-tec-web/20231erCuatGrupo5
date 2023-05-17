@@ -11,12 +11,12 @@
 
                 <!-- Pills navs -->
                 <ul class="nav nav-pills nav-justified mb-5" id="ex1" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <a (click)='showForm();' class="nav-link active"  data-mdb-toggle="pill" role="tab"
+                  <li class="nav-item bont" [ngClass]="{'bont':visibility}" role="presentation">
+                    <a (click)='showForm();' class="nav-link solapa"  data-mdb-toggle="pill" role="tab"
                       aria-controls="pills-login" aria-selected="true">Iniciar Sesion</a>
                   </li>
-                  <li class="nav-item" role="presentation">
-                    <a (click)='showFormhiden();' class="nav-link "  data-mdb-toggle="pill" role="tab"
+                  <li class="nav-item" role="presentation" [ngClass]="{'bont':!visibility}">
+                    <a (click)='showFormhiden();' class="nav-link solapa"  data-mdb-toggle="pill" role="tab"
                       aria-controls="pills-register" aria-selected="true">Registrarse</a>
                   </li>
                 </ul>
@@ -29,13 +29,18 @@
 
                    <!-- Email input -->
                    <div class="form-outline mb-4">
-                     <input type="email" id="usuarioLogin" formControlName="usuarioLogin" class="form-control" />
+                     <input type="email" id="usuarioLogin" formControlName="usuarioLogin" class="form-control"  
+                          [class.is-invalid]="validLogin&&formLogin.controls['usuarioLogin'].invalid"
+                            [class.is-valid]=" validLogin&&formLogin.controls['usuarioLogin'].valid" />
                      <label class="form-label" >Email o Usuario</label>
                    </div>
 
                    <!-- Password input -->
                    <div class="form-outline mb-4">
-                     <input type="password" id="contraseniaLogin" formControlName="contraseniaLogin" class="form-control" />
+                     <input type="password" id="contraseniaLogin" formControlName="contraseniaLogin" class="form-control" 
+                     [class.is-invalid]="validLogin&&  formLogin.controls['contraseniaLogin'].invalid"
+                            [class.is-valid]=" validLogin&&formLogin.controls['contraseniaLogin'].valid"
+                   />
                      <label class="form-label" >Contraseña</label>
                    </div>
 
@@ -44,7 +49,8 @@
                      <div class="col-md-6 d-flex justify-content-center">
                        <!-- Checkbox -->
                        <div class="form-check mb-3 mb-md-0">
-                         <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                         <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked 
+                          />
                          <label class="form-check-label" for="loginCheck"> Recordarme </label>
                        </div>
                      </div>
@@ -73,20 +79,28 @@
                         <form [formGroup]="formRegister">
                              <!-- nombres -->
                              <div class="form-outline mb-4">
-                              <input type="email" id="usuarioRegister" formControlName="usuarioRegister" class="form-control" />
+                              <input type="email" id="usuarioRegister" formControlName="usuarioRegister" class="form-control" required
+                              [class.is-invalid]="validRegister && formRegister.controls['usuarioRegister'].invalid"
+                            [class.is-valid]=" validRegister &&formRegister.controls['usuarioRegister'].valid"/>
                               <label class="form-label" >Nombre de usuario</label>
                             </div>
        
                           <!-- Email input -->
                           <div class="form-outline mb-4">
-                            <input type="email" id="emailRegister" formControlName="emailRegister"class="form-control" />
-                            <label class="form-label" >Email </label>
+                            <input type="email" id="emailRegister"  formControlName="emailRegister"class="form-control" 
+                            [class.is-invalid]="validRegister && formRegister.controls['emailRegister'].invalid"
+                            [class.is-valid]=" validRegister &&formRegister.controls['emailRegister'].valid" />
+                            <label class="form-label"  >Email </label>
+                            
                           </div>
        
                           <!-- Password input -->
                           <div class="form-outline mb-4">
-                            <input type="password" id="contraseniaRegister" formControlName="contraseniaRegister" class="form-control" />
+                            <input type="password" id="contraseniaRegister" formControlName="contraseniaRegister" class="form-control" 
+                            [class.is-invalid]="validRegister && formRegister.controls['contraseniaRegister'].invalid"
+                            [class.is-valid]="validRegister && formRegister.controls['contraseniaRegister'].valid"/>
                             <label class="form-label" >Password</label>
+                            
                           </div>
        
                    

@@ -13,6 +13,9 @@ import { from } from 'rxjs';
 export class LoginComponent implements OnInit {
   visibility : Boolean;
   Accion:string;
+  validRegister:boolean;
+  validLogin:boolean;
+
   usuarioLogin:string;
   contraseniaLogin:string;
 
@@ -27,51 +30,68 @@ export class LoginComponent implements OnInit {
   constructor(protected router:Router,private formBuilder:FormBuilder,protected httpclient:HttpClient	) {
 this.visibility=true;
 this.Accion='Inicia Sesion'
+this.validRegister=false
+this.validLogin=false
+
+
+
   }
   ngOnInit(): void {
     console.log('iniciando app componente')
     this.formLogin=this.formBuilder.group({
       usuarioLogin:new FormControl('',Validators.required),
       contraseniaLogin:new FormControl('',Validators.required)
-    })
+    })  
+
     this.formRegister=this.formBuilder.group({
       usuarioRegister:new FormControl('',Validators.required),
-      emailRegister:new FormControl('',Validators.required),
-      contraseniaRegister:new FormControl('',Validators.required)
+      emailRegister:new FormControl('',[Validators.email,Validators.required]),
+      contraseniaRegister:new FormControl('',[Validators.minLength(5),Validators.required])
+    
+
+
     })
     
   }
 
   showForm(){
-    console.log('boton from view');
+  
   this.visibility=true    
-  console.log(this.visibility); 
   this.Accion='Inicia Sesion' 
 }
 
 
 showFormhiden(){
-  console.log('boton from view');
 this.visibility=false    
-console.log(this.visibility);  
 this.Accion='Registrate' 
 
 }
 
 login(){
-  console.log('ejecuta el form login')
+
   this.usuarioLogin=this.formLogin.get('usuarioLogin').value;
   this.contraseniaLogin=this.formLogin.get('contraseniaLogin').value;
   console.log('usuarioLogin' + this.usuarioLogin + '  contraseniaLogin  '+ this.contraseniaLogin)
-
+   
+   
 }
 
 registro(){
-  console.log('ejecuta el form registro')
+  this.validRegister=true
+
+if(this.formRegister.valid){
+console.log('ejecuta el form registro')
 this.usuarioRegister=this.formRegister.get('usuarioRegister').value;
 this.emailRegister=this.formRegister.get('emailRegister').value;
+
 this.contraseniaRegister=this.formRegister.get('contraseniaRegister').value;
 console.log(this.usuarioRegister+" "+ this.emailRegister+" "+ this.contraseniaRegister)
+
+}
+
+  
+   
+
 
 } 
 }
