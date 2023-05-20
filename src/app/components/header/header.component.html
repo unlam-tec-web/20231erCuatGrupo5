@@ -1,43 +1,37 @@
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-<header class="mb-auto">
-  <nav class="navbar navbar-expand-lg navbar-dark ">
-    <div class="container-fluid">
-      <h3 class="pe-4">E-Commerce | TW2 </h3>
+<header>
+  <mat-toolbar class="p-3 pb-4 d-flex justify-content-end" color="dark">
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Productos</a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/login" class="nav-link">loguearse</a>
-
-          </li>
-          <li class="nav-item">
-      
-          </li>
-        </ul>
-      </div>
+    <div class="d-flex align-items-center">
+      <button (click)="openDialog()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>person</mat-icon>
+      </button>
+      <span>Ingresar</span>
+      <button routerLink="/registro" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+      <span>Mi carrito</span>
     </div>
-  </nav>
+  </mat-toolbar>
+
+<mat-toolbar class="p-3" color="dark">
+  <div>
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="center center">
+      <h1 class="mat-headline-5 title-header" >Taller Web 2 | E-Commerce </h1>
+    </mat-toolbar-row>
+  </div>
+</mat-toolbar>
+
+
+<mat-toolbar class="p-3 pb-4 mb-4 d-flex justify-content-center" color="dark">
+  <div class="w-25">
+    <form class="d-flex justify-content-center" role="search">
+      <input matInput class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>search</mat-icon>
+      </button>
+    </form>
+  </div>
+
+</mat-toolbar>
+
 </header>
-</div>
-
-  <ul class="nav justify-content-center bg-secondary">
-    <li class="nav-item">
-      <a class="nav-link active text-light" aria-current="page" href="#">CATEGORIAS</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-light" href="#">prueba</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-light" href="#">prueba</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-light" href="#" tabindex="-1" aria-disabled="true">prueba</a>
-    </li>
-  </ul>
-
