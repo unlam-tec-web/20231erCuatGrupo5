@@ -1,6 +1,15 @@
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<div class="container pt-4">
+  <h3>Productos</h3>
+
+  <div class="row row-cols-3 mt-3 justify-content-evenly">
+    <!-- Tarjeta -->
+    <div class=" col card m-2 mt-5 pt-2" style="width: 18rem;" *ngFor="let item of product">
+      <img src={{item.images[0]}} class="card-img-top" alt="imagen" style="height: 12rem;">
+      <div class="card-body text-center">
+        <h5 class="card-title text-center">{{item.title}}</h5>
+        <p class="card-text">$USD{{item.price}}</p>
+      </div>
     </div>
+    
+  </div>
 </div>
