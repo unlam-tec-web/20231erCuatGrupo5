@@ -15,6 +15,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import{HeaderComponent} from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FooterComponent } from './components/footer/footer.component';
     ReactiveFormsModule,
     BrowserModule,
    AppRoutingModule,
-   HttpClientModule  
+   HttpClientModule,
+   BrowserAnimationsModule  
   ],
   providers: [],
   bootstrap: [AppComponent]
