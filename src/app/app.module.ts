@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -45,11 +46,8 @@ import {MatIconModule} from '@angular/material/icon';
    BrowserAnimationsModule,
    MatCardModule,
    MatToolbarModule,
-   MatIconModule
-   
-
-
-   
+   MatIconModule,
+   MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
