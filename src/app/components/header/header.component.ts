@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RegisterComponent } from '../register/register.component';
-import { Router } from '@angular/router';
+import {MatDialog} from "@angular/material/dialog";
+import {LoginComponent} from '../login/login.component'
+import {CartComponent} from "../cart/cart.component";
 
 @Component({
   selector: 'app-header',
@@ -9,12 +10,20 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
-
+  constructor(
+    public dialog : MatDialog
+  ) {
+  }
   ngOnInit() {
   }
 
-  navegar() {
-    this.router.navigate(['/registro']);
+
+  openDialog():void{
+    const dialogRef = this.dialog.open(CartComponent,{},);
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+    });
   }
+
 }
+

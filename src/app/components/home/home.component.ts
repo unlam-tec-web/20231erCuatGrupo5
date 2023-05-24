@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  lista = [
+    ["Infinity war ", 200],
+    ["Infinity war 2", 250],
+    ["Infinity war 3", 300],
+    ["Infinity war 4", 500],
+    ["Infinity war 5", 320],
+    ["Infinity war 6", 550],
+  ];
 }
