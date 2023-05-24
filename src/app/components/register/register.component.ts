@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 import {MatDialog} from "@angular/material/dialog";
 import {CartComponent} from "../cart/cart.component";
 

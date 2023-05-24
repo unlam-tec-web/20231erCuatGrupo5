@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {LoginComponent} from '../login/login.component'
+
 import {CartComponent} from "../cart/cart.component";
 
 @Component({

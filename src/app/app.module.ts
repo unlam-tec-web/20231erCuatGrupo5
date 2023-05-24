@@ -16,8 +16,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import{HeaderComponent} from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { MatCard } from '@angular/material/card';
+import{MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -29,18 +30,26 @@ import { MatCard } from '@angular/material/card';
     HeaderComponent,
     LoginComponent,
     ProductComponent,
-    RegisterComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterComponent
+    
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    BrowserModule,
    AppRoutingModule,
    HttpClientModule,
-   BrowserAnimationsModule
+   BrowserModule,
+   BrowserAnimationsModule,
+   MatCardModule,
+   MatToolbarModule,
+   MatIconModule
+   
+
+
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
