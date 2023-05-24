@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
-
+import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductComponent } from './components/product/product.component';
@@ -15,6 +15,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import{HeaderComponent} from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -27,14 +29,19 @@ import { FooterComponent } from './components/footer/footer.component';
     LoginComponent,
     ProductComponent,
     RegisterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NavComponent
+    
+ 
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
    AppRoutingModule,
-   HttpClientModule  
+   HttpClientModule,
+   NgbModule
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]
