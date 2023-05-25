@@ -1,0 +1,42 @@
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #90cf4c;
+    padding: 10px;
+  }
+  
+  .logo,
+  .search-bar,
+  .right-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .search-bar input {
+    padding: 5px;
+    margin-right: 5px;
+  }
+  
+  .search-bar button {
+    padding: 5px;
+    background-color: #cf7272;
+    border: none;
+  }
+  
+  .right-icons {
+    margin-left: auto;
+  }
+  
+  .user-icon i,
+  .cart-icon i {
+    font-size: 18px;
+    margin-right: 15px;
+  }
+  
