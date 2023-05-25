@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-
-import {  TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Component,TemplateRef } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+
+
+
 
 @Component({
   selector: 'app-nav',
@@ -11,6 +12,7 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 export class NavComponent {
 
   closeResult: string;
+  hidden:false;
 
 	constructor(private offcanvasService: NgbOffcanvas) {}
 

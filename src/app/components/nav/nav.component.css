@@ -39,4 +39,15 @@ nav {
     font-size: 18px;
     margin-right: 15px;
   }
-  
+  /*toolbar*/
+  .mat-toolbar-header{
+
+    background-color: darkgrey;
+  }
+  .example-spacer {
+    left: 60%;
+ }
+
+ .colortexto{
+  color: black;
+ }

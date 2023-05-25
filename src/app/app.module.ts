@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+
 
 
 import { AppComponent } from './app.component';
@@ -16,13 +17,24 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import{HeaderComponent} from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import {MatIconModule} from  '@angular/material/icon' ;
+import {MatButtonModule} from  '@angular/material/button' ;
+import {MatToolbarModule} from  '@angular/material/toolbar' ;
+import {MatBadgeModule} from  '@angular/material/badge' ;
+import {MatDividerModule} from '@angular/material/divider';
+
+
+
+
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CartComponent,
-  
     HomeComponent,
     FooterComponent,
     HeaderComponent,
@@ -35,12 +47,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
  
   ],
   imports: [
-    FormsModule,
+  FormsModule,
     ReactiveFormsModule,
     BrowserModule,
    AppRoutingModule,
    HttpClientModule,
-   NgbModule
+   NgbModule,
+   BrowserAnimationsModule,
+   MatToolbarModule,
+   MatButtonModule,
+   MatIconModule,
+   MatBadgeModule,
+   MatDividerModule
  
   ],
   providers: [],
