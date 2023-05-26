@@ -1,131 +1,36 @@
-<section class="vh-100" style="background-color: #eee;">
-  <div class="container h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-lg-12 col-xl-11">
-        <div class="card text-black" style="border-radius: 25px;">
-          <div class="card-body p-md-5">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+<div class="pt-2 pe-2 d-flex justify-content-end">
+  <button (click)="CloseDialog()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<section class="login-component" style="padding: 6em;">
 
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">{{Accion}}</p>
+  <div class="d-flex justify-content-center">
+    <p class="display-4">Iniciar Sesión</p>
+  </div>
 
-                <!-- Pills navs -->
-                <ul class="nav nav-pills nav-justified mb-5" id="ex1" role="tablist">
-                  <li class="nav-item bont" [ngClass]="{'bont':visibility}" role="presentation">
-                    <a (click)='showForm();' class="nav-link solapa"  data-mdb-toggle="pill" role="tab"
-                      aria-controls="pills-login" aria-selected="true">Iniciar Sesion</a>
-                  </li>
-                  <li class="nav-item" role="presentation" [ngClass]="{'bont':!visibility}">
-                    <a (click)='showFormhiden();' class="nav-link solapa"  data-mdb-toggle="pill" role="tab"
-                      aria-controls="pills-register" aria-selected="true">Registrarse</a>
-                  </li>
-                </ul>
-                <!-- Pills navs -->
-               <!---formulario de login-->
-               <div *ngIf="visibility; then thenBlock else elseBlock"></div>
-               <ng-template #thenBlock>
-                <div>
-                 <form [formGroup]="formLogin">
+  <form [formGroup]="LoginForm">
+    <div class="mb-3">
+      <label style="font-size: 1.5em" class="pb-3">Correo electrónico</label>
+      <input type="email" id="UserLogin" formControlName="UserLogin" class="form-control"
+             [class.is-invalid]="IsValidLogin&&LoginForm.controls['UserLogin'].invalid"
+             [class.is-valid]="IsValidLogin&&LoginForm.controls['UserLogin'].valid">
+    </div>
+    <div class="mb-3">
+      <label style="font-size: 1.5em" class="pb-3">Contraseña</label>
+      <input type="password" class="form-control" id="LoginPassword" formControlName="LoginPassword"
+             [class.is-invalid]="IsValidLogin && LoginForm.controls['LoginPassword'].invalid"
+             [class.is-valid]="IsValidLogin && LoginForm.controls['LoginPassword'].valid">
+    </div>
+    <div class="mb-3 d-flex justify-content-center">
+      <button (click)="Login()" class="mb-4 mt-2 btn btn-lg btn-outline-success">Ingresar</button>
+    </div>
 
-                   <!-- Email input -->
-                   <div class="form-outline mb-4">
-                     <input type="email" id="usuarioLogin" formControlName="usuarioLogin" class="form-control"  
-                          [class.is-invalid]="validLogin&&formLogin.controls['usuarioLogin'].invalid"
-                            [class.is-valid]=" validLogin&&formLogin.controls['usuarioLogin'].valid" />
-                     <label class="form-label" >Email o Usuario</label>
-                   </div>
-
-                   <!-- Password input -->
-                   <div class="form-outline mb-4">
-                     <input type="password" id="contraseniaLogin" formControlName="contraseniaLogin" class="form-control" 
-                     [class.is-invalid]="validLogin&&  formLogin.controls['contraseniaLogin'].invalid"
-                            [class.is-valid]=" validLogin&&formLogin.controls['contraseniaLogin'].valid"
-                   />
-                     <label class="form-label" >Contraseña</label>
-                   </div>
-
-                   <!-- 2 column grid layout -->
-                   <div class="row mb-4">
-                     <div class="col-md-6 d-flex justify-content-center">
-                       <!-- Checkbox -->
-                       <div class="form-check mb-3 mb-md-0">
-                         <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked 
-                          />
-                         <label class="form-check-label" for="loginCheck"> Recordarme </label>
-                       </div>
-                     </div>
-
-                     <div class="col-md-6 d-flex justify-content-center">
-                       <!-- Simple link -->
-                       <a href="#!">olvidaste tu contraseña?</a>
-                     </div>
-                   </div>
-
-                   <!-- Submit button -->
-                   <div class="text-center">
-                     <button (click)="login()" class=" btn btn-primary btn-block  col-5 mb-4">Iniciar sesion</button>
-                   </div>
-
-                 </form>
-                </div>
-              </ng-template>
-              <ng-template #elseBlock>
-           
-                <!--fin formulario registro -->
-
-                      <!---  formulario de registro-->
-                     
-                      <div>
-                        <form [formGroup]="formRegister">
-                             <!-- nombres -->
-                             <div class="form-outline mb-4">
-                              <input type="email" id="usuarioRegister" formControlName="usuarioRegister" class="form-control" required
-                              [class.is-invalid]="validRegister && formRegister.controls['usuarioRegister'].invalid"
-                            [class.is-valid]=" validRegister &&formRegister.controls['usuarioRegister'].valid"/>
-                              <label class="form-label" >Nombre de usuario</label>
-                            </div>
-       
-                          <!-- Email input -->
-                          <div class="form-outline mb-4">
-                            <input type="email" id="emailRegister"  formControlName="emailRegister"class="form-control" 
-                            [class.is-invalid]="validRegister && formRegister.controls['emailRegister'].invalid"
-                            [class.is-valid]=" validRegister &&formRegister.controls['emailRegister'].valid" />
-                            <label class="form-label"  >Email </label>
-                            
-                          </div>
-       
-                          <!-- Password input -->
-                          <div class="form-outline mb-4">
-                            <input type="password" id="contraseniaRegister" formControlName="contraseniaRegister" class="form-control" 
-                            [class.is-invalid]="validRegister && formRegister.controls['contraseniaRegister'].invalid"
-                            [class.is-valid]="validRegister && formRegister.controls['contraseniaRegister'].valid"/>
-                            <label class="form-label" >Password</label>
-                            
-                          </div>
-       
-                   
-       
-                          <!-- Submit button -->
-                          <div class="text-center">
-                            <button (click)="registro()" class=" btn btn-primary btn-block  col-5 mb-4">Regístrate</button>
-                          </div>
-       
-                        </form>
-                       </div>
-                       </ng-template>
-        
-              <!---  lado de la imagen-->
-                  </div>
-                  <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                      class="img-fluid" alt="Sample image">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <div class="d-flex justify-content-center mb-3">
+      <label style="font-size: 1.2em" class="pb-3">¿Aún no tenés cuenta? </label>
+      <a style="font-size: 1em" class="ms-2" routerLink="/registro" (click)="CloseDialog()"> Registrarse</a>
+    </div>
+  </form>
 </section>
+
+

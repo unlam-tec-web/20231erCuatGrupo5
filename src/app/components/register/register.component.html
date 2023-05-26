@@ -13,34 +13,47 @@
         <div class="card shadow-2-strong shadow dark-mode" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
             <p class="display-4 mb-5">Registrarse</p>
-            <form>
+
+            <form [formGroup]="RegisterForm">
 
               <div class="form-outline mb-4">
-                <input type="text"  class="form-control form-control-lg"  placeholder="Nombre" name="nombre" />
+                <input type="text" class="form-control form-control-lg" placeholder="Nombre" id="FirstName" formControlName="FirstName"
+                       [class.is-invalid]="IsValidRegister && RegisterForm.controls['FirstName'].invalid"
+                       [class.is-valid]="IsValidRegister && RegisterForm.controls['FirstName'].valid">
               </div>
 
               <div class="form-outline mb-4">
-                <input type="text"  class="form-control form-control-lg" name="apellido" placeholder="Apellido"/>
+                <input type="text" class="form-control form-control-lg" placeholder="Apellido" id="LastName" formControlName="LastName"
+                       [class.is-invalid]="IsValidRegister && RegisterForm.controls['LastName'].invalid"
+                       [class.is-valid]="IsValidRegister && RegisterForm.controls['LastName'].valid">
               </div>
 
               <div class="form-outline mb-4">
-                <input type="text"  class="form-control form-control-lg" name="direccion" placeholder="Direccion 123"/>
+                <input type="text" class="form-control form-control-lg" placeholder="Direccion 123" required id="Adress" formControlName="Adress"
+                       [class.is-invalid]="IsValidRegister && RegisterForm.controls['Adress'].invalid"
+                       [class.is-valid]="IsValidRegister && RegisterForm.controls['Adress'].valid">
               </div>
 
               <div class="form-outline mb-4">
-                <input type="email"  class="form-control form-control-lg" name="email" placeholder="ejemplo@email.com"/>
+                <input type="email" class="form-control form-control-lg" name="Email" placeholder="ejemplo@email.com" required id="Email" formControlName="Email"
+                       [class.is-invalid]="IsValidRegister && RegisterForm.controls['Email'].invalid"
+                       [class.is-valid]="IsValidRegister && RegisterForm.controls['Email'].valid">
               </div>
 
               <div class="form-outline mb-4">
-                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" name="contrasena" placeholder="********"/>
+                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" name="contrasena" placeholder="********"required id="Password" formControlName="Password"
+                       [class.is-invalid]="IsValidRegister && RegisterForm.controls['Password'].invalid"
+                       [class.is-valid]="IsValidRegister && RegisterForm.controls['Password'].valid">
               </div>
 
-              <button class="btn btn-primary btn-lg btn-block shadow" type="submit">Registrarse</button>
+              <button (click)="Registrarse()" class="btn btn-primary btn-lg btn-block shadow" type="submit">Registrarse</button>
             </form>
 
             <hr class="my-4">
 
-            <p class="small fw-bold mt-2 pt-1 mb-0" style="font-size: 1.1em">¿Ya tenes cuenta? <a (click)="OpenLogin()" class="link-danger" style="font-size: 1em">Iniciar sesión</a></p>
+            <p class="small fw-bold mt-2 pt-1 mb-0" style="font-size: 1.1em">
+              ¿Ya tienes cuenta? <a (click)="OpenLogin()" class="link-danger" style="font-size: 1em">Iniciar sesión</a>
+            </p>
           </div>
         </div>
       </div>
