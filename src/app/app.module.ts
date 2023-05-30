@@ -17,12 +17,14 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import{HeaderComponent} from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from  '@angular/material/icon' ;
 import {MatButtonModule} from  '@angular/material/button' ;
 import {MatToolbarModule} from  '@angular/material/toolbar' ;
 import {MatBadgeModule} from  '@angular/material/badge' ;
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
+
 
 
 
@@ -58,7 +60,8 @@ import {MatDividerModule} from '@angular/material/divider';
    MatButtonModule,
    MatIconModule,
    MatBadgeModule,
-   MatDividerModule
+   MatDividerModule,
+   MatTableModule
  
   ],
   providers: [],
