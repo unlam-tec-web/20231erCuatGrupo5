@@ -42,7 +42,7 @@ nav {
   /*toolbar*/
   .mat-toolbar-header{
 
-    background-color: darkgrey;
+    background-color: rgb(97, 60, 130);
   }
   .example-spacer {
     margin-left: 50%;
