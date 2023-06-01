@@ -1,15 +1,23 @@
-<div class="container pt-4">
-  <h3>Productos</h3>
-
+<section class="container pt-4">
+  <h2 class="title-sp">Productos</h2>
   <div class="row row-cols-3 mt-3 justify-content-evenly">
-    <!-- Tarjeta -->
-    <div class=" col card m-2 mt-5 pt-2" style="width: 18rem;" *ngFor="let item of product">
-      <img src={{item.images[0]}} class="card-img-top" alt="imagen" style="height: 12rem;">
-      <div class="card-body text-center">
-        <h5 class="card-title text-center">{{item.title}}</h5>
-        <p class="card-text">$USD{{item.price}}</p>
-      </div>
-    </div>
+    <mat-card class="mat-card" *ngFor="let item of productos">
+      <img mat-card-image class="mat-card-image" src={{item.thumbnail}} alt="Image product">
+      <mat-card-header>
+        <mat-card-title class="mat-card-title"><a href="">{{item.title}}</a></mat-card-title>
+        <mat-card-subtitle class="mat-card-subtitle">{{item.brand}}</mat-card-subtitle>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <p class="card-price">US${{item.price}}</p>
+      </mat-card-content>
     
+      <mat-card-actions class="mat-card-actions">
+        <button mat-fab extended color="primary">
+          <mat-icon>shopping_cart</mat-icon>
+          Agregar al carrito
+        </button>
+      </mat-card-actions>
+    </mat-card>
   </div>
-</div>
+</section>

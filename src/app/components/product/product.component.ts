@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/service/products-service/api.service';
+import { ProductService } from 'src/service/product-service/product.service';
+
 
 @Component({
   selector: 'app-product',
@@ -8,36 +9,20 @@ import { ApiService } from 'src/service/products-service/api.service';
 })
 export class ProductComponent implements OnInit {
 
-  data: any = [];
-  product = []; 
+  productos: any[];
 
-  constructor(private apiService: ApiService){ }
+  constructor(private productService: ProductService) {
+  }
 
   ngOnInit(): void {
-    this.fillData();
+   this.getProductos();
   }
 
-  fillData(): any[] {
-    
-    this.apiService.getProducts()
-    .subscribe(data => {
-      this.data = data;
-      let producto = Object.values(data);
-
-      this.product = this.getProductoPorCategoria(producto);
+  getProductos(): any[] {
+    this.productService.getProductosPorCategoria()
+    .subscribe(values => {
+      this.productos = values;
     });
-    return this.product;
+    return this.productos;
   }
-
-  getProductoPorCategoria(productos: any[]): any[] {
-    let prodElectronicos = [];
-    let arrProductos = productos[0];
-    for(let i=0;i<arrProductos.length;i++){
-      if(arrProductos[i].category=="smartphones" || arrProductos[i].category=="laptos"){
-        prodElectronicos.push(arrProductos[i]);
-      }
-    }
-    return prodElectronicos;
-  }
-
 }

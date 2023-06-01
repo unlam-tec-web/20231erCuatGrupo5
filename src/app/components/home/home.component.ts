@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/service/product-service/product.service';
 
 
 
@@ -7,14 +8,24 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-  lista = [
-    ["Infinity war ", 200],
-    ["Infinity war 2", 250],
-    ["Infinity war 3", 300],
-    ["Infinity war 4", 500],
-    ["Infinity war 5", 320],
-    ["Infinity war 6", 550],
-  ];
+  productos: any[];
+
+  constructor(private productService: ProductService) {
+  }
+
+  ngOnInit(): void {
+    this.getProductos();
+  }
+
+  getProductos(): any[] {
+    this.productService.getProductosPorDescuento()
+    .subscribe(values => {
+      this.productos = values;
+      console.log(this.productos);
+    });
+    return this.productos;
+  }
+  
 }

@@ -1,46 +1,30 @@
-<div class="pb-3 d-flex justify-content-center" style="width: auto; height: auto" >
-  <a href="https://www.hotsale.com.ar/"><img src="assets/img/Header.png" ></a>
+<div class="pb-3 d-flex justify-content-center" id="img-hero" style="width: auto; height: auto" >
+  <a href="#"><img src="assets/img/Header.png"></a>
 </div>
 
-
-
-
-<div class="container pt-4">
-  <h2 class="text-light">¡Los mejores productos los encontrás acá!</h2>
-  <div class="text-center">
-    <h1>Electrodomésticos</h1>
-  </div>
+<section class="container pt-4">
+  <h2 class="title-sp">Productos Destacados</h2>
   <div class="row row-cols-3 mt-3 justify-content-evenly">
-    <!-- Tarjeta -->
-    <div class=" col card m-2 mt-5 pt-2" style="width: 18rem;">
-      <img src="assets/img/heladeras/heladera-1.jpg" class="card-img-top" alt="imagen">
-      <div class="card-body text-center">
-        <h5 class="card-title">H1 Noblex</h5>
-        <p class="card-text">$USD100</p>
-      </div>
-    </div>
-
-    <!-- -->
-    <div class=" col card m-2 mt-5 pt-2" style="width: 18rem;">
-      <img src="assets/img/heladeras/heladera-2.jpg" class="card-img-top" alt="imagen">
-      <div class="card-body text-center">
-        <h5 class="card-title">HN5 Philco</h5>
-        <p class="card-text">$USD300</p>
-      </div>
-    </div>
-
-    <!-- -->
-    <div class=" col card m-2 mt-5 pt-2" style="width: 18rem;">
-      <img src="assets/img/heladeras/heladera-2.jpg" class="card-img-top" alt="imagen">
-      <div class="card-body text-center">
-        <h5 class="card-title">PQ9 - Patrick</h5>
-        <p class="card-text">$USD300</p>
-      </div>
-    </div>
-
-
+    <mat-card class="mat-card" *ngFor="let item of productos">
+      <img mat-card-image class="mat-card-image" src={{item.thumbnail}} alt="Image product">
+      <mat-card-header>
+        <mat-card-title class="mat-card-title"><a href="">{{item.title}}</a></mat-card-title>
+        <mat-card-subtitle class="mat-card-subtitle">{{item.brand}}</mat-card-subtitle>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <p class="card-price">US${{item.price}}</p>
+      </mat-card-content>
+    
+      <mat-card-actions class="mat-card-actions">
+        <button mat-fab extended color="primary">
+          <mat-icon>shopping_cart</mat-icon>
+          Agregar al carrito
+        </button>
+      </mat-card-actions>
+    </mat-card>
   </div>
-</div>
+</section>
 
 
 
