@@ -1,57 +1,109 @@
+<nav class="navbar navbar-expand-lg navbar-light " color="primay">
+  <a class="navbar-brand" href="#">Logo</a>
 
-
-<!--
-
-<nav>
-    <div class="logo">Logo</div>
-    <div class="search-bar">
-      <input  class="form-control mr-sm-3" type="text" placeholder="Buscar...">
-      <button><i class="fas fa-search"></i></button>
-    </div>
-    <div class="right-icons">  
-         <div class="cart-icon"><i class="fas fa-shopping-cart"></i>jnj</div>
-      <div class="cart-icon" ><a (click)="openEnd(content)"><i class="fi fi-rr-shopping-cart"></i></a></div>
-   
-    </div>
-  </nav>-->
-
- 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Logo</a>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="form-inline my-2 my-lg-0 mx-auto">
-        <div class="input-group">
-          <input class="form-control" type="search" placeholder="Buscar" aria-label="Buscar">
-          <div class="input-group-append">
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
-          </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form class="form-inline my-2 my-lg-0 mx-auto">
+      <div class="input-group">
+        <input class="form-control" type="search" placeholder="Buscar" aria-label="Buscar">
+        <div class="input-group-append">
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
         </div>
-      </form>
-    </div>
-  
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fi fi-rr-shopping-cart"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a (click)="openEnd(content)"><i class="fi fi-rr-shopping-cart"></i></a>
-      </li>
-    </ul>
-  </nav>
-  
+      </div>
+    </form>
+  </div>
+
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <i class="fi fi-rr-shopping-cart"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+
+      <a (click)="openEnd(content)"><i class="fi fi-rr-shopping-cart"></i></a>
+    </li>
+  </ul>
+</nav>
+
+
+
 
 <ng-template #content let-offcanvas>
-	<div class="offcanvas-header">
+  <!--div class="offcanvas-header">
 		<h4 class="offcanvas-title">Offcanvas title</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
-	</div>
-	<div class="offcanvas-body">
-		<p>One fine body&hellip;</p>
-		<div class="text-end">
-			<button type="button" class="btn btn-outline-dark" (click)="offcanvas.close('Close click')">Close</button>
-		</div>
-	</div>
+	</div-->
+  <mat-toolbar class="mat-toolbar-header">
+   
+      <mat-icon>shopping_cart</mat-icon> 
+   
+    <span>   Mi Carrito</span>
+
+    <button (click)="offcanvas.close('Close click')" mat-icon-button class="example-spacer"
+      aria-label="Example icon-button with share icon">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
+
+
+
+
+  <div *ngIf="productos.length!=0; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock> <div class="container">
+
+    <div class="container-product" *ngFor="let producto of productos; let i=index">
+      <div class="container-img-remove">
+        <div>
+          <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+            (click)="eliminarProducto(i)"><mat-icon>delete</mat-icon></button>
+
+        </div>
+        <div>
+
+          <img alt="Imagen Pequeña" class="small-image">
+        </div>
+      </div>
+      <div class="container-add">
+        <div>
+          <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+            (click)="sumarCant(i)"><mat-icon>add</mat-icon></button>
+        </div>
+
+        <div>
+          <span>{{producto["cantidad"]}}</span>
+        </div>
+
+        <div>
+          <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+            (click)="restarCant(i)">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+
+      </div>
+      <div>
+        <span> {{producto["precio"]}} c/u</span>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="container-precio-total">
+    <div>
+      <p>Total</p>
+    </div>
+    <div> <span>{{sumaTotal}} $</span></div>
+  </div>
+
+  <div class="example-button-row">
+    <button mat-button color="primary">Comprar</button>
+  </div></ng-template>
+  <ng-template #elseBlock><p>
+    <ngb-alert> No posees aun productos en el carrito de compras </ngb-alert>
+  </p>
+  <button mat-button color="primary">Ir a ver productos</button></ng-template>
+
+
+ 
+
 </ng-template>

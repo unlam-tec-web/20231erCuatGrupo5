@@ -39,4 +39,69 @@ nav {
     font-size: 18px;
     margin-right: 15px;
   }
-  
+  /*toolbar*/
+  .mat-toolbar-header{
+
+    background-color: rgb(97, 60, 130);
+  }
+  .example-spacer {
+    margin-left: 50%;
+ }
+
+ .colortexto{
+  color: black;
+ }
+
+
+ .scrollable-div {
+  height: 500px; /* Establece la altura máxima deseada */
+  overflow: auto; /* Crea una barra de desplazamiento cuando sea necesario */
+}
+.example-spacer {
+  flex: 1 1 auto;
+  margin-top: 0px;
+}
+
+.container{
+  height: 200px; /* Establece la altura máxima deseada */
+  overflow: auto; 
+  padding: 0px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+
+.small-image {
+  width: 55px;
+  height: 50px;
+  object-fit: cover;
+ 
+}
+
+
+
+.container-img-remove ,.container-precio-total, .container-add, .container-product{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+
+
+
+
+
+
+
+.example-button-row  {
+  text-align: center;
+}
+
+.example-button-row button {
+  background-color:beige;
+}
+
+
+
+

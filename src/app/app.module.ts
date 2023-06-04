@@ -1,10 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { AppRoutingModule } from './app-routing.module';
+/* Componentes de Angular Material y ngBootstrap */
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatIconModule} from  '@angular/material/icon' ;
+import {MatButtonModule} from  '@angular/material/button' ;
+import {MatToolbarModule} from  '@angular/material/toolbar' ;
+import {MatBadgeModule} from  '@angular/material/badge' ;
+import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
+import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from "@angular/material/dialog";
+/* Componentes propios */
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -15,12 +25,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from "@angular/material/dialog";
-import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,6 @@ import { MatButtonModule } from '@angular/material/button';
     ProductComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    FooterComponent,
     RegisterComponent
   ],
   imports: [
@@ -43,12 +46,17 @@ import { MatButtonModule } from '@angular/material/button';
     AppRoutingModule,
     HttpClientModule,
     BrowserModule,
+    NgbModule,
     BrowserAnimationsModule,
-    MatCardModule,
     MatToolbarModule,
+    MatButtonModule,
     MatIconModule,
-    MatDialogModule,
-    MatButtonModule
+    MatBadgeModule,
+    MatDividerModule,
+    MatTableModule,
+    MatCardModule,
+    MatDialogModule
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]
