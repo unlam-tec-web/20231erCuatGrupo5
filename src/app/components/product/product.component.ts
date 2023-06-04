@@ -19,9 +19,9 @@ export class ProductComponent implements OnInit {
   }
 
   getProductos(): any[] {
-    this.productService.getProductosPorCategoria()
+    this.productService.getProductos()
     .subscribe(values => {
-      this.productos = values;
+      this.productos = values.products;
     });
     return this.productos;
   }

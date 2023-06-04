@@ -24,13 +24,10 @@ export class ProductService {
       .pipe(
         map((response: any) => {
           //Obtengo todos los productos de la API
-          this.products = response;
-
-          //Lo convierto a un array
-          let arrProductos = Object.values(this.products);
+          this.products = response.products;
 
           //Filtro por la categoría que necesito
-          this.productosFiltrados = this.filtrarProductosPorCategoria(arrProductos);
+          this.productosFiltrados = this.filtrarProductosPorCategoria(this.products);
 
           return this.productosFiltrados;
         })
@@ -38,13 +35,11 @@ export class ProductService {
   }
 
   public getProductosPorDescuento(): Observable<any> {
-    return this.http.get<any>(this.urlProductos)
+    return this.getProductos()
     .pipe(
       map((response:any)=>{
-        this.products = response;
-        let arrProductos = Object.values(this.products);
-
-        this.productosFiltrados = this.filtrarProductosPorDescuento(arrProductos);
+        this.products = response.products;
+        this.productosFiltrados = this.filtrarProductosPorDescuento(this.products);
 
         return this.productosFiltrados;
       })
@@ -53,17 +48,16 @@ export class ProductService {
 
   private filtrarProductosPorCategoria(productos: any[]): any[] {
     let prodElectronicos = [];
-    let arrProductos = productos[0];
-
-    for(let i=0;i<arrProductos.length;i++){
-      if(arrProductos[i].category=="smartphones" || arrProductos[i].category=="laptops"){
-        prodElectronicos.push(arrProductos[i]);
+ 
+    for(let i=0;i<productos.length;i++){
+      if(productos[i].category=="smartphones" || productos[i].category=="laptops"){
+        prodElectronicos.push(productos[i]);
       }
     }
     return prodElectronicos;
   }
   
-  //Provisorio para que muestre menos productos en el home
+  //Para que muestre menos productos en el home - Revisar top/limit
   private filtrarProductosPorDescuento(productos: any[]): any[] {
     let prodElectronicos = [];
     let arrProductos = this.filtrarProductosPorCategoria(productos);
