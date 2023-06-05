@@ -10,7 +10,7 @@ import { ProductService } from 'src/service/product-service/product.service';
 })
 export class HomeComponent implements OnInit {
 
-  productos: any[];
+  productosInicio: any[];
 
   constructor(private productService: ProductService) {
   }
@@ -22,10 +22,10 @@ export class HomeComponent implements OnInit {
   getProductos(): any[] {
     this.productService.getProductosPorDescuento()
     .subscribe(values => {
-      this.productos = values;
-      console.log(this.productos);
+      this.productosInicio = values;
+      console.log(this.productosInicio);
     });
-    return this.productos;
+    return this.productosInicio;
   }
   
 }
