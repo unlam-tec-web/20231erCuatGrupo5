@@ -27,6 +27,9 @@
     padding: 0;
     color: #000;
 }
+.mat-card-title a:hover{
+    text-decoration: underline;
+}
 .mat-card-subtitle{
     color:#0000008a;
 }

@@ -25,6 +25,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FooterComponent } from './components/footer/footer.component';
     ProductComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    RegisterComponent
+    RegisterComponent,
+    CategoryComponent
   ],
   imports: [
     FormsModule,

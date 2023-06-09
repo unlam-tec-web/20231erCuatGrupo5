@@ -8,9 +8,9 @@ let cantidad2=1;
 
 const productos= [
   { "cantidad":cantidad1,
-    "imagen":"/20231erCuatGrupo5/src/assets/img/Header.png",
+    "imagen":"assets/img/Header.png",
 "precio":60000},
-{"imagen":"/20231erCuatGrupo5/src/assets/img/shopping.jpg",
+{"imagen":"assets/img/shopping.jpg",
 "cantidad":cantidad2,"precio":14000},
 
 ];
