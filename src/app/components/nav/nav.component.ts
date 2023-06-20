@@ -15,7 +15,7 @@ import { CarritoService } from 'src/service/carrito.service';
 })
 export class NavComponent {
 
-  productos:any[];
+  productos=null;
 
 
   closeResult: string;
@@ -42,8 +42,7 @@ export class NavComponent {
 
   cerrar(){
 
-if(this.productos==null){
-  localStorage.removeItem("carrito");
+if(this.sumaTotal==0){
   localStorage.clear();
 
 }else{

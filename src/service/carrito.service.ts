@@ -40,13 +40,11 @@ import { HttpClient } from '@angular/common/http';
         let product=null;
         product=this.MostrarProducto()
         if(product==null){
-          alert("esta vacio")
           boolean= true;
         }else{
          
      for(let i=0 ; i< product.length; i++){
       if(product[i].productos.id!=id){
-          alert("el producto se agrego al carrito correctamente")
           boolean= true;
        
         }else{
