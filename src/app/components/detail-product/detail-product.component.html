@@ -1,0 +1,43 @@
+<div class="container-detalle" *ngIf="producto; else msg">
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile class="mat-grid-tile">
+            <img class="mat-grid-image" src={{producto.thumbnail}} alt="Image product">
+        </mat-grid-tile>
+
+        <mat-grid-tile class="mat-grid-tile">
+            <div>
+                <h1 class="h1-title">{{producto.title}}</h1>
+                <p class="p-brand">{{producto.brand}}</p>
+                <mat-divider class="mat-divider"></mat-divider>
+                <span class="span-price">USD${{producto.price}}</span>
+                <p>{{producto.description}}</p>
+
+                <div class="button-container">
+                    <input type="number" class="input" min="1" max="10" placeholder="1" value="1">
+
+                    <button mat-fab extended color="primary">
+                        <mat-icon>shopping_cart</mat-icon>
+                        <a>Agregar al carrito</a> 
+                    </button>
+                </div>
+
+                <div class="container-enlaces">
+                    <button mat-raised-button color="basic" class="mat-raised-button">
+                        <mat-icon class="mat-icon">credit_card</mat-icon>
+                        Medios de pago 
+                    </button>
+                    <button mat-raised-button color="basic" class="mat-raised-button">
+                        <mat-icon class="mat-icon">local_shipping</mat-icon>
+                        Métodos de envío
+                    </button>
+                    <button mat-raised-button color="basic" class="mat-raised-button">
+                        <mat-icon class="mat-icon">location_on</mat-icon>
+                        Retiro en sucursal
+                    </button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+<ng-template #msg>El producto seleccionado no está disponible</ng-template>
+

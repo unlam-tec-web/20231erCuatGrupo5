@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import{PageNotFoundComponent}from './components/page-not-found/page-not-found.component'
 import { ProductComponent } from './components/product/product.component';
 import { CategoryComponent } from './components/category/category.component';
+import { DetailProductComponent } from './components/detail-product/detail-product.component';
 
 //rutas de navegacion
 const routes: Routes = [
@@ -15,8 +16,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent},  
   { path: 'registro', component: RegisterComponent},
-  //{ path: 'productos', component: ProductComponent},
+  //Desde acá puedo ver la lista de todos los productos:
   { path: 'categoria', component: CategoryComponent},
+  { path: 'products/:id', component: DetailProductComponent},
     //ruta 404
   {path:'**',component:PageNotFoundComponent}
 

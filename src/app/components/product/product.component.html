@@ -4,7 +4,7 @@
     <mat-card class="mat-card" *ngFor="let item of productos ; let i=index">
       <img mat-card-image class="mat-card-image" src={{item.thumbnail}} alt="Image product">
       <mat-card-header>
-        <mat-card-title class="mat-card-title"><a href="">{{item.title}}</a></mat-card-title>
+        <mat-card-title class="mat-card-title"><a [routerLink]="['/products', item.id]">{{item.title}}</a></mat-card-title>
         <mat-card-subtitle class="mat-card-subtitle">{{item.brand}}</mat-card-subtitle>
       </mat-card-header>
       
@@ -15,7 +15,7 @@
       <mat-card-actions class="mat-card-actions">
         <button mat-fab extended color="primary" (click)="AgregarProducto(item,item.id)">
           <mat-icon>shopping_cart</mat-icon>
-          Agregar al carrito
+           <a>Agregar al carrito</a> 
         </button>
       </mat-card-actions>
     </mat-card>

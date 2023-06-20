@@ -1,0 +1,37 @@
+.mat-grid-tile{
+    padding: 3em 0;
+}
+.h1-title{
+    margin: 0;
+    padding: 0;
+}
+.mat-divider{
+    background-color: #808080;
+    margin: 1.5em 0;
+}
+.span-price{
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 600;
+    color: #841f75;
+    padding-bottom: 1.5em;
+}
+.button-container{
+    display: flex;
+    align-items: center;
+    padding: 1em 0;
+}
+.input{
+    height: 44px;
+    width: 150px;
+    border-radius: 24px;
+    padding: 0.2em 1.5em;
+    margin-right: 1.5em;
+    text-align: center;
+}
+.container-enlaces{
+    padding: 2em 0;
+}
+.mat-raised-button{
+    margin: 0 0.3em;
+}

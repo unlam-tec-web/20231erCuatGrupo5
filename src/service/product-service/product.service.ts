@@ -47,6 +47,17 @@ export class ProductService {
     );
   }
 
+  getProductoPorId(id:number): Observable<any> {
+    const url = `${this.urlProductos}/${id}`;
+    return this.http.get<any>(url)
+    .pipe(
+      map(res => {
+        console.log(res);
+        return res;
+      })
+    );
+  }
+
   private filtrarProductosPorCategoria(productos: any[]): any[] {
     let prodElectronicos = [];
  
