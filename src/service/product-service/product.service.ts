@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { NavComponent } from 'src/app/components/nav/nav.component';
 
 @Injectable({
   providedIn: 'root'
