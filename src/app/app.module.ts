@@ -19,10 +19,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
 /* Componentes propios */
 import { AppComponent } from './app.component';
-import { CartComponent } from './components/cart/cart.component';
+import { LoginComponent } from './components/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
+//import { LoginComponent } from './components/login-2/login.component';
 import { ProductComponent } from './components/product/product.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -34,7 +34,7 @@ import { DetailProductComponent } from './components/detail-product/detail-produ
 @NgModule({
   declarations: [
     AppComponent,
-    CartComponent,
+    LoginComponent,
     NavComponent,
     HomeComponent,
     FooterComponent,
@@ -65,7 +65,7 @@ import { DetailProductComponent } from './components/detail-product/detail-produ
     MatDialogModule,
     MatGridListModule,
     MatListModule
- 
+
   ],
   providers: [],
   bootstrap: [AppComponent]
