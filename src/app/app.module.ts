@@ -14,6 +14,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list';
 /* Componentes propios */
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -26,6 +28,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CategoryComponent } from './components/category/category.component';
+import { DetailProductComponent } from './components/detail-product/detail-product.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { CategoryComponent } from './components/category/category.component';
     PageNotFoundComponent,
     HeaderComponent,
     RegisterComponent,
-    CategoryComponent
+    CategoryComponent,
+    DetailProductComponent
   ],
   imports: [
     FormsModule,
@@ -57,7 +61,9 @@ import { CategoryComponent } from './components/category/category.component';
     MatDividerModule,
     MatTableModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridListModule,
+    MatListModule
  
   ],
   providers: [],
