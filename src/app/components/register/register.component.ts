@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog} from "@angular/material/dialog";
-import {CartComponent} from "../cart/cart.component";
+import {LoginComponent} from "../login/login.component";
 
 @Component({
   selector: 'app-register',
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit{
     this.router.navigate(['/home'])
     setTimeout(() => {
       console.log("#################HOLAAAAAAAA#################");
-      const dialogRef = this.dialog.open(CartComponent,{},);
+      const dialogRef = this.dialog.open(LoginComponent,{},);
       // Realizar la acción deseada después del retraso
     }, 300);
   }

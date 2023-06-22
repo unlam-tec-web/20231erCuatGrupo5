@@ -14,7 +14,7 @@ const routes: Routes = [
   //nos redirige a la pagina principal
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'login', component: LoginComponent},  
+  { path: 'login', component: LoginComponent},
   { path: 'registro', component: RegisterComponent},
   //Desde acá puedo ver la lista de todos los productos:
   { path: 'categoria', component: CategoryComponent},
