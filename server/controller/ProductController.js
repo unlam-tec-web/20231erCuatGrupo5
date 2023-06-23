@@ -1,19 +1,16 @@
 //DEPENDENCIAS NODE
 const express = require("express");
-const bodyParser = require('body-parser');
-const app = express();
-
-//MODULOS PROPIOS
+const router = express.Router();
 const service = require('../service/product_service');
 
-app.use(bodyParser.json())
-
-app.get('/GetProducts', (req, res) => {
+//LISTAR TODOS LOS PRODUCTOS
+router.get('/GetProducts', (req, res) => {
   const products = service.GetProducts();
   res.json(products)
 });
 
-app.get('/GetProductsById/:id?', (req, res) => {
+//BUSCAR POR ID
+router.get('/GetProductsById/:id?', (req, res) => {
   const id = req.params.id;
   if(!id){
     res.status(400).json(
@@ -29,11 +26,12 @@ app.get('/GetProductsById/:id?', (req, res) => {
   res.json(product)
 });
 
-app.post('/AddProducto', (req, res) => {
+//NUEVO PRODUCTO
+router.post('/AddProducto', (req, res) => {
   const ProductRequest = req.body;
   if (Object.keys(ProductRequest).length === 0){
     return res.status(400).json(
-      { titulo: "Error en la petición", mensaje: "No se ha ingresado información correcta", status_code: 404 }
+      { titulo: "Error en la petición", mensaje: "No se ha ingresado información correcta", status_code: 400 }
     );
   }
   service.AddProducto(ProductRequest)
@@ -44,7 +42,30 @@ app.post('/AddProducto', (req, res) => {
   });
 });
 
-app.delete('/DeleteProductById/:id?', (req, res) => {
+//ACTUALIZAR PRODUCTO
+router.put('/UpdateProduct', (req, res) => {
+  const UpdatedProduct = req.body;
+  if (Object.keys(UpdatedProduct).length === 0) {
+    return res.status(400).json(
+      {titulo: "Error en la petición", mensaje: "No se ha ingresado información correcta", status_code: 400}
+    );
+  }
+  const updated = service.UpdateProduct(UpdatedProduct)
+  if (!updated){
+    return res.status(404).json(
+      {titulo: "Error en la petición", mensaje: "El producto " + UpdatedProduct.id + " no existe", status_code: 404}
+    );
+  }
+  res.status(200).json({
+    titulo: "Producto actualizado",
+    mensaje: "El producto ha sido actualizado exitosamente",
+    status_code: 200
+  });
+
+});
+
+//ELIMINAR PRODUCTO
+router.delete('/DeleteProductById/:id?', (req, res) => {
   const id = req.params.id;
   if(!id){
     res.status(400).json(
@@ -66,13 +87,4 @@ app.delete('/DeleteProductById/:id?', (req, res) => {
   });
 });
 
-
-
-
-function InitServer() {
-  app.listen(3000, () => {
-    console.log('Servidor iniciado en el puerto 3000');
-  });
-}
-
-InitServer()
+module.exports = router;
