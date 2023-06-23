@@ -20,7 +20,7 @@ function AddProducto(producto){
 }
 
 function DeleteProductById(id){
-  const index = ProductosList.findIndex(element => element.id === id);
+  const index = ProductosList.findIndex(element => element.id === Number(id));
   if (index !== -1) {
     ProductosList.splice(index, 1);
   }
@@ -28,25 +28,13 @@ function DeleteProductById(id){
 
 function UpdateProduct(producto){
   console.log(JSON.stringify(producto))
-  const index = getProductIndex(producto.id)
+  const index = ProductosList.findIndex(element => element.id === producto.id);
   if(index === -1){
     console.log("Producto ", producto.id , " no encontrado")
     return false;
   }
   setNewValues(index, producto);
   return true;
-}
-
-function getProductIndex(id) {
-  let indiceProducto = -1;
-
-  ProductosList.forEach((producto, indice) => {
-    if (producto.id === id) {
-      indiceProducto = indice;
-    }
-  });
-
-  return indiceProducto;
 }
 
 function setNewValues(i, producto){

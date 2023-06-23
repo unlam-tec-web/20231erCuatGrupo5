@@ -1,21 +1,16 @@
 //DEPENDENCIAS NODE
 const express = require("express");
-const bodyParser = require('body-parser');
-const app = express();
-
-//MODULOS PROPIOS
+const router = express.Router();
 const service = require('../service/product_service');
 
-app.use(bodyParser.json())
-
 //LISTAR TODOS LOS PRODUCTOS
-app.get('/GetProducts', (req, res) => {
+router.get('/GetProducts', (req, res) => {
   const products = service.GetProducts();
   res.json(products)
 });
 
 //BUSCAR POR ID
-app.get('/GetProductsById/:id?', (req, res) => {
+router.get('/GetProductsById/:id?', (req, res) => {
   const id = req.params.id;
   if(!id){
     res.status(400).json(
@@ -32,7 +27,7 @@ app.get('/GetProductsById/:id?', (req, res) => {
 });
 
 //NUEVO PRODUCTO
-app.post('/AddProducto', (req, res) => {
+router.post('/AddProducto', (req, res) => {
   const ProductRequest = req.body;
   if (Object.keys(ProductRequest).length === 0){
     return res.status(400).json(
@@ -48,7 +43,7 @@ app.post('/AddProducto', (req, res) => {
 });
 
 //ACTUALIZAR PRODUCTO
-app.put('/UpdateProduct', (req, res) => {
+router.put('/UpdateProduct', (req, res) => {
   const UpdatedProduct = req.body;
   if (Object.keys(UpdatedProduct).length === 0) {
     return res.status(400).json(
@@ -70,7 +65,7 @@ app.put('/UpdateProduct', (req, res) => {
 });
 
 //ELIMINAR PRODUCTO
-app.delete('/DeleteProductById/:id?', (req, res) => {
+router.delete('/DeleteProductById/:id?', (req, res) => {
   const id = req.params.id;
   if(!id){
     res.status(400).json(
@@ -92,13 +87,4 @@ app.delete('/DeleteProductById/:id?', (req, res) => {
   });
 });
 
-
-
-
-function InitServer() {
-  app.listen(3000, () => {
-    console.log('Servidor iniciado en el puerto 3000');
-  });
-}
-
-InitServer()
+module.exports = router;
