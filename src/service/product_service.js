@@ -1,34 +1,64 @@
-const productos = require('../models/product');
+const ProductosList = require('../models/product');
 
 function GetProducts(){
-  return productos;
+  return ProductosList;
 }
 
 function GetProductsById(id){
-  producto =  productos.find(e => e.id == id);
+  producto =  ProductosList.find(e => e.id == id);
   return producto === undefined ? null : producto;
 }
 
 function AddProducto(producto){
   const _producto =  {
-    id: JSON.stringify(productos.length + 1),
+    id: (ProductosList.length + 1),
     descripcion: producto.descripcion,
     precio: producto.precio,
-    stock: producto.stock
+    stock: producto.stock,
   }
-  productos.push(_producto)
+  ProductosList.push(_producto)
 }
 
 function DeleteProductById(id){
-  const index = productos.findIndex(element => element.id === id);
+  const index = ProductosList.findIndex(element => element.id === id);
   if (index !== -1) {
-    productos.splice(index, 1);
+    ProductosList.splice(index, 1);
   }
+}
+
+function UpdateProduct(producto){
+  console.log(JSON.stringify(producto))
+  const index = getProductIndex(producto.id)
+  if(index === -1){
+    console.log("Producto ", producto.id , " no encontrado")
+    return false;
+  }
+  setNewValues(index, producto);
+  return true;
+}
+
+function getProductIndex(id) {
+  let indiceProducto = -1;
+
+  ProductosList.forEach((producto, indice) => {
+    if (producto.id === id) {
+      indiceProducto = indice;
+    }
+  });
+
+  return indiceProducto;
+}
+
+function setNewValues(i, producto){
+  ProductosList[i].descripcion = producto.descripcion;
+  ProductosList[i].precio = producto.precio;
+  ProductosList[i].stock = producto.stock;
 }
 
 module.exports = {
   GetProducts,
   GetProductsById,
   AddProducto,
+  UpdateProduct,
   DeleteProductById
 };

@@ -8,11 +8,13 @@ const service = require('../service/product_service');
 
 app.use(bodyParser.json())
 
+//LISTAR TODOS LOS PRODUCTOS
 app.get('/GetProducts', (req, res) => {
   const products = service.GetProducts();
   res.json(products)
 });
 
+//BUSCAR POR ID
 app.get('/GetProductsById/:id?', (req, res) => {
   const id = req.params.id;
   if(!id){
@@ -29,11 +31,12 @@ app.get('/GetProductsById/:id?', (req, res) => {
   res.json(product)
 });
 
+//NUEVO PRODUCTO
 app.post('/AddProducto', (req, res) => {
   const ProductRequest = req.body;
   if (Object.keys(ProductRequest).length === 0){
     return res.status(400).json(
-      { titulo: "Error en la petición", mensaje: "No se ha ingresado información correcta", status_code: 404 }
+      { titulo: "Error en la petición", mensaje: "No se ha ingresado información correcta", status_code: 400 }
     );
   }
   service.AddProducto(ProductRequest)
@@ -44,6 +47,29 @@ app.post('/AddProducto', (req, res) => {
   });
 });
 
+//ACTUALIZAR PRODUCTO
+app.put('/UpdateProduct', (req, res) => {
+  const UpdatedProduct = req.body;
+  if (Object.keys(UpdatedProduct).length === 0) {
+    return res.status(400).json(
+      {titulo: "Error en la petición", mensaje: "No se ha ingresado información correcta", status_code: 400}
+    );
+  }
+  const updated = service.UpdateProduct(UpdatedProduct)
+  if (!updated){
+    return res.status(404).json(
+      {titulo: "Error en la petición", mensaje: "El producto " + UpdatedProduct.id + " no existe", status_code: 404}
+    );
+  }
+  res.status(200).json({
+    titulo: "Producto actualizado",
+    mensaje: "El producto ha sido actualizado exitosamente",
+    status_code: 200
+  });
+
+});
+
+//ELIMINAR PRODUCTO
 app.delete('/DeleteProductById/:id?', (req, res) => {
   const id = req.params.id;
   if(!id){
