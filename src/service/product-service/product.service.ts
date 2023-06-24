@@ -1,19 +1,32 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import {product} from "../../app/model/product";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
-  private urlProductos = 'https://dummyjson.com/products';
-  private products: any[]; 
+  private urlProductos = 'http://localhost:3000/product/GetProducts';
+  private products: any[];
   private productosFiltrados: any[];
+  _products : product[] = [];
+
+  public http = inject(HttpClient)
+
+  public GetLocalProducts(){
+    this.http.get<product[]>(this.urlProductos)
+      .subscribe((data) => {
+          this._products = data;
+          console.log(data)
+          console.log(this._products)
+        }
+      )
+  }
 
 
-  constructor(private http: HttpClient) { }
+  //constructor(private http: HttpClient) { }
 
   public getProductos(): Observable<any> {
     return this.http.get<any>(this.urlProductos)
@@ -36,19 +49,30 @@ export class ProductService {
 
   public getProductosPorDescuento(): Observable<any> {
     return this.getProductos()
-    .pipe(
-      map((response:any)=>{
-        this.products = response.products;
-        this.productosFiltrados = this.filtrarProductosPorDescuento(this.products);
+      .pipe(
+        map((response:any)=>{
+          this.products = response.products;
+          this.productosFiltrados = this.filtrarProductosPorDescuento(this.products);
 
-        return this.productosFiltrados;
-      })
-    );
+          return this.productosFiltrados;
+        })
+      );
+  }
+
+  getProductoPorId(id:number): Observable<any> {
+    const url = `${this.urlProductos}/${id}`;
+    return this.http.get<any>(url)
+      .pipe(
+        map(res => {
+          console.log(res);
+          return res;
+        })
+      );
   }
 
   private filtrarProductosPorCategoria(productos: any[]): any[] {
     let prodElectronicos = [];
- 
+
     for(let i=0;i<productos.length;i++){
       if(productos[i].category=="smartphones" || productos[i].category=="laptops"){
         prodElectronicos.push(productos[i]);
@@ -56,7 +80,7 @@ export class ProductService {
     }
     return prodElectronicos;
   }
-  
+
   //Para que muestre menos productos en el home - Revisar top/limit
   private filtrarProductosPorDescuento(productos: any[]): any[] {
     let prodElectronicos = [];

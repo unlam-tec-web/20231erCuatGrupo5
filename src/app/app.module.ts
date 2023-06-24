@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
 /* Componentes de Angular Material y ngBootstrap */
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -18,14 +19,14 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 
 /* Componentes propios */
 import { AppComponent } from './app.component';
-import { CartComponent } from './components/cart/cart.component';
+import { LoginComponent } from './components/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
+//import { LoginComponent } from './components/login-2/login.component';
 import { ProductComponent } from './components/product/product.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -33,11 +34,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CategoryComponent } from './components/category/category.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
+import { DetailProductComponent } from './components/detail-product/detail-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CartComponent,
+    LoginComponent,
     NavComponent,
     HomeComponent,
     FooterComponent,
@@ -48,7 +50,8 @@ import { PedidoComponent } from './components/pedido/pedido.component';
     HeaderComponent,
     RegisterComponent,
     CategoryComponent,
-    PedidoComponent
+    PedidoComponent,
+    DetailProductComponent
   ],
   imports: [
     FormsModule,
@@ -69,7 +72,9 @@ import { PedidoComponent } from './components/pedido/pedido.component';
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

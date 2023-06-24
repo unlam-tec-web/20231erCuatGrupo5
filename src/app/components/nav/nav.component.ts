@@ -1,23 +1,28 @@
-import { Component,TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { PedidoService } from '../../../service/product-service/pedido.service'
+import { Component, TemplateRef, OnInit } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { NgbAlertConfig, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-import {PedidoService} from '../../../service/product-service/pedido.service'
+import { CarritoService } from 'src/service/carrito.service';
 
 
-let cantidad1=1;
-let cantidad2=1;
 
-const productos= [
-  { "descripcion":"Celular samsung S23",
-    "cantidad":cantidad1,
-    "imagen":"assets/img/Header.png",
-"precio":60000},
-{"descripcion":"Celular samsung A04e","imagen":"assets/img/shopping.jpg",
-"cantidad":cantidad2,"precio":14000},
+
+const productos = [
+  {
+    "descripcion": "Celular samsung S23",
+    "cantidad": 1,
+    "imagen": "assets/img/Header.png",
+    "precio": 60000
+  },
+  {
+    "descripcion": "Celular samsung A04e", "imagen": "assets/img/shopping.jpg",
+    "cantidad": 1, "precio": 14000
+  },
 
 
 ];
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -26,51 +31,87 @@ const productos= [
 })
 export class NavComponent {
 
+  productos = null;
+
+
   closeResult: string;
-  productos = productos;
+  // productos = productos;
 
-  sumaTotal=0;
-	constructor(private offcanvasService: NgbOffcanvas ,alertConfig: NgbAlertConfig,private router: Router,private _pedidoService : PedidoService) {
+  sumaTotal = 0;
+
+  constructor(private offcanvasService: NgbOffcanvas, alertConfig: NgbAlertConfig, private carritoService: CarritoService, private router: Router, private _pedidoService: PedidoService) {
     alertConfig.type = 'success';
-		alertConfig.dismissible = false;
+    alertConfig.dismissible = false;
+
+
   }
 
-	openEnd(content: TemplateRef<any>) {
-		this.offcanvasService.open(content, { position: 'end' });
-    //cuando se abre el carrito realiza rl total de los productos
- this.totalPagar();
-	}
 
-  totalPagar(){
-    this.sumaTotal=0;
-    for(let i=0 ; i< productos.length; i++){
-      let suma=productos[i].precio * productos[i].cantidad;
-      this.sumaTotal=suma+this.sumaTotal
-    console.log(productos.length)
-     }
+
+  openEnd(content: TemplateRef<any>) {
+    this.offcanvasService.open(content, { position: 'end' });
+    //this.productos=this.carritoService.MostrarProducto();
+    this.verProductos();
+    this.sumaTotalProductos()
+
+
   }
 
-sumarCant( index:number){
+  cerrar() {
 
-  this.productos[index].cantidad=this.productos[index].cantidad+1;
-  this.totalPagar();
+    if (this.sumaTotal == 0) {
+      localStorage.clear();
 
-}
-restarCant(index:number){
-  this.productos[index].cantidad=this.productos[index].cantidad-1;
-  this.totalPagar();
-  if(this.productos[index].cantidad==0){
-    this.eliminarProducto(index)
+    } else {
+      localStorage.setItem("carrito", JSON.stringify(this.productos));
+
+    }
+
+
   }
-}
+  verProductos() {
+    if (this.carritoService.MostrarProducto == null) {
+      this.productos = null;
+    } else {
+      this.productos = this.carritoService.MostrarProducto();
+    }
 
-eliminarProducto(index:number){
-  this.productos.splice(index,1);
-  this.totalPagar();
-}
-  comprar(){
+  }
+
+  sumarCantidadProducto(index: number) {
+    this.productos[index].cantidad = this.productos[index].cantidad + 1;
+  }
+  comprar() {
     this._pedidoService.setData(this.sumaTotal);
     this._pedidoService.setProductos(this.productos);
     this.router.navigate(['/pedido']);
+  }
+
+  restarCantidadProducto(index: number) {
+    this.productos[index].cantidad = this.productos[index].cantidad - 1;
+    this.sumaTotalProductos();
+
+    if (this.productos[index].cantidad == 0) {
+      this.eliminarProducto(index);
+    }
+  }
+
+  sumaTotalProductos() {
+    this.sumaTotal = 0;
+    let suma = 0;
+    if (this.productos == null) {
+    } else {
+      for (let i = 0; i < this.productos.length; i++) {
+        suma = (this.productos[i].productos.price * this.productos[i].cantidad) + suma;
+      }
+
+    }
+    this.sumaTotal = this.sumaTotal + suma;
+
+  }
+
+  eliminarProducto(index: number) {
+    this.productos.splice(index, 1);
+    this.sumaTotalProductos();
   }
 }
