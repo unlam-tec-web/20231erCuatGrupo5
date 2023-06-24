@@ -1,47 +1,48 @@
-<nav class="navbar navbar-expand-lg navbar-light " color="primay">
-  <a class="navbar-brand" href="#">Logo</a>
+<nav class="navbar navbar-expand-lg navbar-light px-5">
+  <a class="navbar-brand"><img src="../../../assets/img/ecommerce.png" alt="imagen-logo"></a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <form class="form-inline my-2 my-lg-0 mx-auto">
       <div class="input-group">
         <input class="form-control" type="search" placeholder="Buscar" aria-label="Buscar">
         <div class="input-group-append">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
+          <button class="btn" type="submit">
+            <mat-icon class="mat-icon-search">search</mat-icon>
+          </button>
         </div>
       </div>
     </form>
   </div>
 
   <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-item-a" (click)="openDialog()">
+        <mat-icon class="mat-icon">person</mat-icon>
+        <span class="nav-item-span">Ingresar</span>
+      </a> 
+    </li>
 
     <li class="nav-item">
-
-      <a (click)="openEnd(content)"><i class="fi fi-rr-shopping-cart"></i></a>
+      <a (click)="openEnd(content)">
+        <mat-icon class="mat-icon">shopping_cart</mat-icon>
+      </a> 
     </li>
   </ul>
 </nav>
 
-
-
-
+<!--------------------------Panel de Carrito-------------------------->
 <ng-template #content let-offcanvas>
   <!--div class="offcanvas-header">
 		<h4 class="offcanvas-title">Offcanvas title</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
 	</div-->
   <mat-toolbar class="mat-toolbar-header">
-   
-      <mat-icon>shopping_cart</mat-icon> 
-   
-    <span> Mi Carrito</span>
-
-    <button (click)="cerrar()" (click)="offcanvas.close('Close click')" mat-icon-button class="example-spacer"
-      aria-label="Example icon-button with share icon">
+    <mat-icon>shopping_cart</mat-icon> 
+    <span>Mi Carrito</span>
+    <a (click)="cerrar()" (click)="offcanvas.close('Close click')" class="close-icon" aria-label="close-icon">
       <mat-icon>close</mat-icon>
-    </button>
+  </a>
   </mat-toolbar>
-
-
 
 
   <div *ngIf="sumaTotal!=0; then thenBlock else elseBlock"></div>
@@ -93,12 +94,11 @@
   <div class="example-button-row">
     <button mat-button color="primary" (click)="offcanvas.close()" (click)="comprar()">Comprar</button>
   </div></ng-template>
-  <ng-template #elseBlock><p>
-    <ngb-alert> No posees aun productos en el carrito de compras </ngb-alert>
-  </p>
-  <button mat-button color="primary">Ir a ver productos</button></ng-template>
-
-
- 
+  <ng-template #elseBlock>
+    <p>
+      <ngb-alert> No posees aun productos en el carrito de compras </ngb-alert>
+    </p>
+    <a class="a-productos" href="">Ir a ver productos</a>
+</ng-template>
 
 </ng-template>

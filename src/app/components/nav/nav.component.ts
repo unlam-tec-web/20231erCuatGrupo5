@@ -4,8 +4,8 @@ import { Component, TemplateRef, OnInit } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { NgbAlertConfig, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarritoService } from 'src/service/carrito.service';
-
-
+import {MatDialog} from "@angular/material/dialog";
+import {LoginComponent} from "../login/login.component";
 
 
 const productos = [
@@ -39,7 +39,7 @@ export class NavComponent {
 
   sumaTotal = 0;
 
-  constructor(private offcanvasService: NgbOffcanvas, alertConfig: NgbAlertConfig, private carritoService: CarritoService, private router: Router, private _pedidoService: PedidoService) {
+  constructor(private offcanvasService: NgbOffcanvas, alertConfig: NgbAlertConfig, private carritoService: CarritoService, private router: Router, private _pedidoService: PedidoService, public dialog : MatDialog) {
     alertConfig.type = 'success';
     alertConfig.dismissible = false;
 
@@ -69,6 +69,15 @@ export class NavComponent {
 
 
   }
+
+  openDialog():void{
+    const dialogRef = this.dialog.open(LoginComponent,{},);
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+    });
+  }
+
+
   verProductos() {
     if (this.carritoService.MostrarProducto == null) {
       this.productos = null;
