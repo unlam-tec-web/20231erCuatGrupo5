@@ -91,7 +91,7 @@
   </div>
 
   <div class="example-button-row">
-    <button mat-button color="primary">Comprar</button>
+    <button mat-button color="primary" (click)="offcanvas.close()" (click)="comprar()">Comprar</button>
   </div></ng-template>
   <ng-template #elseBlock><p>
     <ngb-alert> No posees aun productos en el carrito de compras </ngb-alert>

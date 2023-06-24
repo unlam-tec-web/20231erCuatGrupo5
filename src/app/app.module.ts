@@ -15,8 +15,12 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from "@angular/material/dialog";
-import {MatGridListModule} from '@angular/material/grid-list';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 /* Componentes propios */
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -29,6 +33,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CategoryComponent } from './components/category/category.component';
+import { PedidoComponent } from './components/pedido/pedido.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
 
 @NgModule({
@@ -45,6 +50,7 @@ import { DetailProductComponent } from './components/detail-product/detail-produ
     HeaderComponent,
     RegisterComponent,
     CategoryComponent,
+    PedidoComponent,
     DetailProductComponent
   ],
   imports: [
@@ -63,8 +69,11 @@ import { DetailProductComponent } from './components/detail-product/detail-produ
     MatTableModule,
     MatCardModule,
     MatDialogModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatListModule,
     MatGridListModule,
-    MatListModule
 
   ],
   providers: [],
