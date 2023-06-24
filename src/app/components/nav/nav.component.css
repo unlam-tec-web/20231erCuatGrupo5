@@ -39,16 +39,17 @@ nav {
   background-color: #613c82;
   padding-right: 0;
 }
-.close-icon {
-  margin-left: 50%;
-}
 .close-icon  {
+  margin-left: 50%;
   padding: 0;
   padding-left: 0.8em;
   padding-top: 0.5em;
 }
 .close-icon:hover{
   background-color: transparent;
+}
+.close-icon mat-icon{
+  color: #000;
 }
 .example-spacer {
   margin-left: 50%;
@@ -88,9 +89,5 @@ nav {
 .a-productos{
   color: #613c82;
   text-align: center;
-  text-decoration: none;
   font-size: 16px;
-}
-.a-productos:hover{
-  text-decoration: underline;
 }

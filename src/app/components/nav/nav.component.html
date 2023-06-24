@@ -51,7 +51,7 @@
     <div class="container-product" *ngFor="let producto of productos; let i=index">
       <div class="container-img-remove">
         <div>
-          <button (click)="eliminarProducto(i)" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+          <button (click)="eliminarProducto(i)" mat-icon-button aria-label="Eliminar producto">
             <mat-icon>delete</mat-icon></button>
 
         </div>
@@ -62,7 +62,7 @@
       </div>
       <div class="container-add">
         <div>
-          <button (click)="sumarCantidadProducto(i)" mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+          <button (click)="sumarCantidadProducto(i)" mat-icon-button aria-label="Agregar producto"
             ><mat-icon>add</mat-icon></button>
         </div>
 
@@ -71,7 +71,7 @@
         </div>
 
         <div>
-          <button (click)="restarCantidadProducto(i)" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+          <button (click)="restarCantidadProducto(i)" mat-icon-button aria-label="Descontar producto">
             <mat-icon>remove</mat-icon>
           </button>
         </div>

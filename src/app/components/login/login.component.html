@@ -1,34 +1,34 @@
-<div class="pt-2 pe-2 d-flex justify-content-end">
-  <button (click)="CloseDialog()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+<div class="pt-2 pe-2 d-flex justify-content-end" id="container-btn-close">
+  <button (click)="CloseDialog()"  class="close-icon" aria-label="Cerrar dialogo">
     <mat-icon>close</mat-icon>
   </button>
 </div>
-<section class="login-component" style="padding: 6em;">
+<section class="login-component">
 
     <div class="d-flex justify-content-center">
       <p class="display-4">Iniciar Sesión</p>
     </div>
 
     <form [formGroup]="LoginForm">
-      <div class="mb-3">
-        <label style="font-size: 1.5em" class="pb-3">Correo electrónico</label>
+      <div class="form-campos">
+        <label>Correo electrónico</label>
         <input type="email" id="UserLogin" formControlName="UserLogin" class="form-control"
                [class.is-invalid]="IsValidLogin&&LoginForm.controls['UserLogin'].invalid"
                [class.is-valid]="IsValidLogin&&LoginForm.controls['UserLogin'].valid">
       </div>
-      <div class="mb-3">
-        <label style="font-size: 1.5em" class="pb-3">Contraseña</label>
+      <div class="form-campos">
+        <label>Contraseña</label>
         <input type="password" class="form-control" id="LoginPassword" formControlName="LoginPassword"
                [class.is-invalid]="IsValidLogin && LoginForm.controls['LoginPassword'].invalid"
                [class.is-valid]="IsValidLogin && LoginForm.controls['LoginPassword'].valid">
       </div>
       <div class="mb-3 d-flex justify-content-center">
-        <button (click)="Login()" class="mb-4 mt-2 btn btn-lg btn-outline-success">Ingresar</button>
+        <button (click)="Login()" mat-raised-button color="primary" class="btn-login">Ingresar</button>
       </div>
 
-      <div class="d-flex justify-content-center mb-3">
-        <label style="font-size: 1.2em" class="pb-3">¿Aún no tenés cuenta? </label>
-        <a style="font-size: 1em" class="ms-2" routerLink="/registro"> Registrarse</a>
+      <div class="d-flex justify-content-center mb-3" id="a-registro">
+        <label class="pb-3">¿Aún no tenés cuenta? </label>
+        <a class="ms-2" routerLink="/registro"> Registrate</a>
       </div>
     </form>
 </section>
