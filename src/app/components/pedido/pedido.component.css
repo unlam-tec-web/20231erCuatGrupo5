@@ -1,0 +1,12 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.pantalla{
+    width: 1200px;
+    margin: 0 auto;
+}
+mat-form-field{
+    width: 100%;
+}
+.cantidad{
+    float: right;
+}

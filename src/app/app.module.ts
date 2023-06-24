@@ -14,6 +14,12 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatListModule} from '@angular/material/list';
+
+
 /* Componentes propios */
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -26,6 +32,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CategoryComponent } from './components/category/category.component';
+import { PedidoComponent } from './components/pedido/pedido.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +47,8 @@ import { CategoryComponent } from './components/category/category.component';
     PageNotFoundComponent,
     HeaderComponent,
     RegisterComponent,
-    CategoryComponent
+    CategoryComponent,
+    PedidoComponent
   ],
   imports: [
     FormsModule,
@@ -57,8 +65,11 @@ import { CategoryComponent } from './components/category/category.component';
     MatDividerModule,
     MatTableModule,
     MatCardModule,
-    MatDialogModule
- 
+    MatDialogModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import{PageNotFoundComponent}from './components/page-not-found/page-not-found.component'
 import { ProductComponent } from './components/product/product.component';
 import { CategoryComponent } from './components/category/category.component';
+import { PedidoComponent } from './components/pedido/pedido.component';
 
 //rutas de navegacion
 const routes: Routes = [
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'registro', component: RegisterComponent},
   //{ path: 'productos', component: ProductComponent},
   { path: 'categoria', component: CategoryComponent},
+  //{ path: 'pedido', component: PedidoComponent}
+  { path: 'pedido',component: PedidoComponent},
     //ruta 404
   {path:'**',component:PageNotFoundComponent}
 

@@ -1,17 +1,21 @@
 import { Component,TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { NgbAlertConfig, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import {PedidoService} from '../../../service/product-service/pedido.service'
 
 
 let cantidad1=1;
 let cantidad2=1;
 
 const productos= [
-  { "cantidad":cantidad1,
+  { "descripcion":"Celular samsung S23",
+    "cantidad":cantidad1,
     "imagen":"assets/img/Header.png",
 "precio":60000},
-{"imagen":"assets/img/shopping.jpg",
+{"descripcion":"Celular samsung A04e","imagen":"assets/img/shopping.jpg",
 "cantidad":cantidad2,"precio":14000},
+
 
 ];
 @Component({
@@ -26,7 +30,7 @@ export class NavComponent {
   productos = productos;
 
   sumaTotal=0;
-	constructor(private offcanvasService: NgbOffcanvas ,alertConfig: NgbAlertConfig) {
+	constructor(private offcanvasService: NgbOffcanvas ,alertConfig: NgbAlertConfig,private router: Router,private _pedidoService : PedidoService) {
     alertConfig.type = 'success';
 		alertConfig.dismissible = false;
   }
@@ -64,4 +68,9 @@ eliminarProducto(index:number){
   this.productos.splice(index,1);
   this.totalPagar();
 }
+  comprar(){
+    this._pedidoService.setData(this.sumaTotal);
+    this._pedidoService.setProductos(this.productos);
+    this.router.navigate(['/pedido']);
+  }
 }
