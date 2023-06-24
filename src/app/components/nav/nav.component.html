@@ -53,11 +53,10 @@
         <div>
           <button (click)="eliminarProducto(i)" mat-icon-button aria-label="Eliminar producto">
             <mat-icon>delete</mat-icon></button>
-
         </div>
         <div>
-
-          <img alt="Imagen Pequeña" class="small-image" src={{producto.productos.thumbnail}}>
+          <span> {{producto.productos.descripcion}} </span>
+          <!--<img alt="Imagen Pequeña" class="small-image" src={{producto.productos.thumbnail}}>-->
         </div>
       </div>
       <div class="container-add">
@@ -67,7 +66,7 @@
         </div>
 
         <div>
-          <span>{{producto.productos.price}}</span>
+          <span>{{producto.productos.precio}}</span>
         </div>
 
         <div>
@@ -92,7 +91,7 @@
   </div>
 
   <div class="example-button-row">
-    <button mat-button color="primary" (click)="offcanvas.close()" (click)="comprar()">Comprar</button>
+    <button mat-button color="primary" (click)="offcanvas.close()" (click)="comprar()">Finalizar compra</button>
   </div></ng-template>
   <ng-template #elseBlock>
     <p>
