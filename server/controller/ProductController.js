@@ -10,7 +10,7 @@ router.get('/GetProducts', (req, res) => {
 });
 
 //BUSCAR POR ID
-router.get('/GetProductsById/:id?', (req, res) => {
+router.get('/GetProduct/:id?', (req, res) => {
   const id = req.params.id;
   if(!id){
     res.status(400).json(
@@ -79,7 +79,7 @@ router.delete('/DeleteProductById/:id?', (req, res) => {
     );
   }
 
-  service.DeleteProductById(id);
+  service.DeleteProduct(id);
   res.status(200).json({
     titulo: "Producto eliminado",
     mensaje: "El producto ha sido eliminado exitosamente",

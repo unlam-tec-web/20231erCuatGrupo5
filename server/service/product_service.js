@@ -1,4 +1,4 @@
-const ProductosList = require('../models/product');
+const ProductosList = require('../model/product');
 
 function GetProducts(){
   return ProductosList;
@@ -19,7 +19,7 @@ function AddProducto(producto){
   ProductosList.push(_producto)
 }
 
-function DeleteProductById(id){
+function DeleteProduct(id){
   const index = ProductosList.findIndex(element => element.id === Number(id));
   if (index !== -1) {
     ProductosList.splice(index, 1);
@@ -48,5 +48,5 @@ module.exports = {
   GetProductsById,
   AddProducto,
   UpdateProduct,
-  DeleteProductById
+  DeleteProduct
 };

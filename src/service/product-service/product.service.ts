@@ -10,7 +10,7 @@ import { NavComponent } from 'src/app/components/nav/nav.component';
 export class ProductService {
 
   private urlProductos = 'https://dummyjson.com/products';
-  private products: any[]; 
+  private products: any[];
   private productosFiltrados: any[];
 
 
@@ -60,7 +60,7 @@ export class ProductService {
 
   private filtrarProductosPorCategoria(productos: any[]): any[] {
     let prodElectronicos = [];
- 
+
     for(let i=0;i<productos.length;i++){
       if(productos[i].category=="smartphones" || productos[i].category=="laptops"){
         prodElectronicos.push(productos[i]);
@@ -68,7 +68,7 @@ export class ProductService {
     }
     return prodElectronicos;
   }
-  
+
   //Para que muestre menos productos en el home - Revisar top/limit
   private filtrarProductosPorDescuento(productos: any[]): any[] {
     let prodElectronicos = [];
