@@ -15,14 +15,8 @@ export class ProductService {
 
   public http = inject(HttpClient)
 
-  public GetLocalProducts(){
-    this.http.get<product[]>(this.urlProductos)
-      .subscribe((data) => {
-          this._products = data;
-          console.log(data)
-          console.log(this._products)
-        }
-      )
+  getLocalProducts(){
+    return this.http.get<product[]>(this.urlProductos)
   }
 
 
