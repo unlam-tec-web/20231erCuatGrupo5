@@ -14,8 +14,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const x = this.productService.GetLocalProducts();
-    console.log(x)
   }
 
   getProductos(): any[] {
