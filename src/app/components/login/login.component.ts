@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef:MatDialogRef<LoginComponent>,
-    @Inject(MAT_DIALOG_DATA) public message: string) { this.IsValidLogin = false; }
+    @Inject(MAT_DIALOG_DATA) public message: string,
+    private router: Router) { this.IsValidLogin = false; }
 
   ngOnInit(): void {
     console.log("#########################COMENZANDO#########################");
@@ -36,6 +38,13 @@ export class LoginComponent implements OnInit {
       'Password': this.LoginPassword
     };
     console.log(res)
+  }
+
+  IrARegistro(){
+    this.CloseDialog();
+    setTimeout(() => {
+      this.router.navigate(['/registro']);
+    }, 200);
   }
 
   CloseDialog() {

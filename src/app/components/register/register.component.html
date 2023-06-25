@@ -1,46 +1,41 @@
-<!--<h2 mat-dialog-title>Confirmación</h2>
-<mat-dialog-content>{{ message }}</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="onClickNO()">NO</button>
-  <button mat-button mat-dialog-close="true">Si</button>
-</mat-dialog-actions>-->
-
 <section class="vh-100">
   <div class="container-fluid">
     <div class="row d-flex justify-content-evenly align-items-center h-100">
 
-      <div style="width: 80%">
-        <div class="card shadow-2-strong shadow dark-mode" style="border-radius: 1rem;">
-          <div class="card-body p-5 text-center">
-            <p class="display-4 mb-5">Registrarse</p>
+      <div class="card-container">
+        <div class="card shadow-2-strong shadow">
+          <div class="card-body p-5">
+            <p class="display-4 text-center">Registrarse</p>
             <form>
-
-              <div class="form-outline mb-4">
-                <input type="text"  class="form-control form-control-lg"  placeholder="Nombre" name="nombre" />
+              <div class="form-campos">
+                <label>Nombre</label>
+                <input type="text"  class="form-control " name="nombre"/>
               </div>
 
-              <div class="form-outline mb-4">
-                <input type="text"  class="form-control form-control-lg" name="apellido" placeholder="Apellido"/>
+              <div class="form-campos">
+                <label>Apellido</label>
+                <input type="text"  class="form-control " name="apellido"/>
               </div>
 
-              <div class="form-outline mb-4">
-                <input type="text"  class="form-control form-control-lg" name="direccion" placeholder="Direccion 123"/>
+              <div class="form-campos">
+                <label>Dirección</label>
+                <input type="text"  class="form-control " name="direccion"/>
               </div>
 
-              <div class="form-outline mb-4">
-                <input type="email"  class="form-control form-control-lg" name="email" placeholder="ejemplo@email.com"/>
+              <div class="form-campos">
+                <label>Correo electrónico</label>
+                <input type="email"  class="form-control " name="email"/>
               </div>
 
-              <div class="form-outline mb-4">
-                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" name="contrasena" placeholder="********"/>
+              <div class="form-campos">
+                <label>Contraseña</label>
+                <input type="password" id="typePasswordX-2" class="form-control " name="contrasena"/>
               </div>
-
-              <button class="btn btn-primary btn-lg btn-block shadow" type="submit">Registrarse</button>
+              <div class="mb-2 mt-4 d-flex justify-content-center align-items-end">
+                <a (click)="IrAInicio()" class="a-inicio">Ir al inicio</a>
+                <button  mat-raised-button color="primary" class="btn-registro">Registrarse</button>
+              </div>
             </form>
-
-            <hr class="my-4">
-
-            <p class="small fw-bold mt-2 pt-1 mb-0" style="font-size: 1.1em">¿Ya tenes cuenta? <a (click)="OpenLogin()" class="link-danger" style="font-size: 1em">Iniciar sesión</a></p>
           </div>
         </div>
       </div>

@@ -11,6 +11,7 @@
     background-color: transparent;
     border: none;
     outline: none;
+    color: #fff;
 }
 .close-icon:hover{
     background-color: transparent;
@@ -24,8 +25,8 @@
     padding-top: 1em;
 }
   .btn-login{
-    margin-top: 1em;
-    margin-bottom: 2em;
+    margin-top: 2em;
+    margin-bottom: 1em;
     padding: 1.5em;
     font-size: 16px;
   }

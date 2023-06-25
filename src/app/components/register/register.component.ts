@@ -15,14 +15,8 @@ export class RegisterComponent implements OnInit{
   constructor(private router: Router, private dialog: MatDialog) {
   }
 
-  OpenLogin() {
-
-    this.router.navigate(['/home'])
-    setTimeout(() => {
-      console.log("#################HOLAAAAAAAA#################");
-      const dialogRef = this.dialog.open(LoginComponent,{},);
-      // Realizar la acción deseada después del retraso
-    }, 300);
+  IrAInicio() {
+    this.router.navigate(['/home']);
   }
 }
 

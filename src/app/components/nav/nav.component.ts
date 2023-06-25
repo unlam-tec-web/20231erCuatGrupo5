@@ -46,7 +46,9 @@ export class NavComponent {
 
   }
 
-
+  IrAInicio() {
+    this.router.navigate(['/home']);
+  }
 
   openEnd(content: TemplateRef<any>) {
     this.offcanvasService.open(content, { position: 'end' });
