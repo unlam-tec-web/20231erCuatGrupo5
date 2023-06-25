@@ -1,8 +1,8 @@
 <div class="pantalla">
-  <mat-stepper linear #stepper style="background-color: #4a4a4a;">
+  <mat-stepper linear #stepper>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Datos personales</ng-template>
+        <ng-template matStepLabel><span class="span-data">Datos personales</span></ng-template>
         <mat-form-field>
           <mat-label>Nombre</mat-label>
           <input matInput formControlName="firstCtrl" placeholder="Nombre" required>
@@ -26,13 +26,13 @@
           <mat-error *ngIf="firstFormGroup.get('fourthCtrl').hasError('pattern')">Ingrese un teléfono válido</mat-error>
         </mat-form-field>
         <div>
-          <button mat-button matStepperNext>Siguiente</button>
+          <button  mat-raised-button color="primary" matStepperNext>Siguiente</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Datos de entrega</ng-template>
+        <ng-template matStepLabel><span class="span-data">Datos de entrega</span></ng-template>
         <mat-form-field>
           <mat-label>Partido</mat-label>
           <input matInput formControlName="secondCtrl" placeholder="Partido"required>
@@ -54,13 +54,13 @@
           <input matInput formControlName="secondCtrl" placeholder="codigo postal"required>
         </mat-form-field>
         <div>
-          <button mat-button matStepperPrevious>Atrás</button>
-          <button mat-button matStepperNext>Siguiente</button>
+          <button mat-raised-button color="primary" matStepperPrevious>Atrás</button>
+          <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
         </div>
       </form>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
+      <ng-template matStepLabel><span class="span-data">Confirmar compra</span></ng-template>
       <div class="container-product" *ngFor="let producto of productos;">
         <div>
           <span>{{producto["descripcion"]}}</span>
@@ -69,9 +69,9 @@
         </div>
       </div>
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button (click)="stepper.reset()">Reestablecer datos</button>
-        <button mat-button matStepperPrevious>Pagar {{sumaTotal}}</button>
+        <button mat-raised-button color="primary" matStepperPrevious>Atrás</button>
+        <button mat-raised-button (click)="stepper.reset()">Reestablecer datos</button>
+        <button mat-raised-button color="primary" matStepperPrevious>Pagar {{sumaTotal}}</button>
       </div>
     </mat-step>
   </mat-stepper>
