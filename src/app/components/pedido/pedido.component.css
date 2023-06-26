@@ -11,7 +11,7 @@ mat-stepper{
     background-color: #fff;
 }
 mat-form-field{
-    width: 70%;
+    width: 60%;
 }
 form{
     text-align: center;
@@ -23,16 +23,17 @@ form{
 ::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
     color: #000;
 }
+mat-label{
+    background-color: transparent;
+    color: #000;
+}
 button{
     margin-left: 0.8em;
     margin-top: 1em;
     padding: 1.5em 1em;
     font-size: 15px;
 }
-mat-label{
-    background-color: transparent;
-    color: #000;
-}
+/********* Stepper **********/
 .matStepLabel{
     color: #000;
 }

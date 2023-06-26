@@ -19,7 +19,9 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     public dialogRef:MatDialogRef<LoginComponent>,
     @Inject(MAT_DIALOG_DATA) public message: string,
-    private router: Router) { this.IsValidLogin = false; }
+    private router: Router) { 
+      this.IsValidLogin = false; 
+    }
 
   ngOnInit(): void {
     console.log("#########################COMENZANDO#########################");
@@ -31,6 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   Login(){
+    this.IsValidLogin = true;
     this.User = this.LoginForm.get('UserLogin').value;
     this.LoginPassword = this.LoginForm.get('LoginPassword').value;
     var res = {

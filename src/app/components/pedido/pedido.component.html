@@ -20,7 +20,7 @@
           <mat-error *ngIf="firstFormGroup.get('thirdCtrl').hasError('pattern')">Ingrese un email válido</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Telefono</mat-label>
+          <mat-label>Teléfono</mat-label>
           <input matInput formControlName="fourthCtrl" placeholder="Telefono" >
           <mat-error *ngIf="firstFormGroup.get('fourthCtrl').hasError('required')">El teléfono es obligatorio</mat-error>
           <mat-error *ngIf="firstFormGroup.get('fourthCtrl').hasError('pattern')">Ingrese un teléfono válido</mat-error>

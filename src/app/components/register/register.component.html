@@ -5,31 +5,48 @@
       <div class="card-container">
         <div class="card shadow-2-strong shadow">
           <div class="card-body p-5">
-            <p class="display-4 text-center">Registrarse</p>
-            <form>
+            <p class="display-4 text-center mb-5">Registrarse</p>
+            <form [formGroup]="formRegistro"> 
               <div class="form-campos">
-                <label>Nombre</label>
-                <input type="text"  class="form-control " name="nombre"/>
+                <mat-form-field>
+                  <mat-label>Nombre</mat-label>
+                  <input matInput type="text" formControlName="nombre" class="form-control " name="nombre"/>
+                  <mat-error *ngIf="formRegistro.get('nombre').hasError('required')">El nombre es obligatorio</mat-error>
+                </mat-form-field>
               </div>
 
               <div class="form-campos">
-                <label>Apellido</label>
-                <input type="text"  class="form-control " name="apellido"/>
+                <mat-form-field>
+                  <mat-label>Apellido</mat-label>
+                  <input matInput type="text" formControlName="apellido" class="form-control " name="apellido"/>
+                  <mat-error *ngIf="formRegistro.get('apellido').hasError('required')">El apellido es obligatorio</mat-error>
+                </mat-form-field>
               </div>
 
               <div class="form-campos">
-                <label>Dirección</label>
-                <input type="text"  class="form-control " name="direccion"/>
+                <mat-form-field>
+                  <mat-label>Dirección</mat-label>
+                  <input matInput type="text" formControlName="direccion" class="form-control " name="direccion"/>
+                  <mat-error *ngIf="formRegistro.get('direccion').hasError('required')">La dirección es obligatoria</mat-error>
+                </mat-form-field>
               </div>
 
               <div class="form-campos">
-                <label>Correo electrónico</label>
-                <input type="email"  class="form-control " name="email"/>
+                <mat-form-field>
+                  <mat-label>Correo electrónico</mat-label>
+                  <input matInput type="email" formControlName="email" class="form-control " name="email" required/>
+                  <mat-error *ngIf="formRegistro.get('email').hasError('required')">El email es obligatorio</mat-error>
+                  <mat-error *ngIf="formRegistro.get('email').hasError('pattern')">Ingrese un email válido</mat-error>
+               </mat-form-field>
               </div>
 
               <div class="form-campos">
-                <label>Contraseña</label>
-                <input type="password" id="typePasswordX-2" class="form-control " name="contrasena"/>
+                <mat-form-field>
+                  <mat-label>Contraseña</mat-label>
+                  <input matInput type="password" formControlName="contrasenia" id="typePasswordX-2" class="form-control " name="contrasenia"/>
+                  <mat-error *ngIf="formRegistro.get('contrasenia').hasError('required')">La contraseña es obligatoria</mat-error>
+                  <mat-error *ngIf="formRegistro.get('contrasenia').hasError('minlength')">La contraseña debe tener 8 (ocho) caracteres como mínimo</mat-error>
+                </mat-form-field>
               </div>
               <div class="mb-2 mt-4 d-flex justify-content-center align-items-end">
                 <a (click)="IrAInicio()" class="a-inicio">Ir al inicio</a>
