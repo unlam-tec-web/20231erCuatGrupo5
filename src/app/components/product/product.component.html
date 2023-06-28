@@ -2,7 +2,7 @@
   <h2 class="title-sp">Productos</h2>
   <div class="row row-cols-3 mt-3 justify-content-evenly">
     <mat-card class="mat-card" *ngFor="let item of productos ; let i=index">
-      <img mat-card-image class="mat-card-image" src={{item}} alt="Image product">
+      <img mat-card-image class="mat-card-image" src={{item.imagen}} alt="Image product">
       <mat-card-header>
         <mat-card-title class="mat-card-title"><a [routerLink]="['/products', item.id]">{{item.descripcion}}</a></mat-card-title>
         <mat-card-subtitle class="mat-card-subtitle">{{item.stock}}</mat-card-subtitle>

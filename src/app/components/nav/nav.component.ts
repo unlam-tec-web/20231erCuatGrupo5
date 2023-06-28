@@ -91,6 +91,8 @@ export class NavComponent {
 
   sumarCantidadProducto(index: number) {
     this.productos[index].cantidad = this.productos[index].cantidad + 1;
+    this.sumaTotalProductos();
+
   }
   comprar() {
     this._pedidoService.setData(this.sumaTotal);
@@ -113,7 +115,7 @@ export class NavComponent {
     if (this.productos == null) {
     } else {
       for (let i = 0; i < this.productos.length; i++) {
-        suma = (this.productos[i].productos.price * this.productos[i].cantidad) + suma;
+        suma = (this.productos[i].productos.precio * this.productos[i].cantidad) + suma;
       }
 
     }

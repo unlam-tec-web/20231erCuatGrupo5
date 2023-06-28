@@ -1,3 +1,4 @@
+const productos = require('../model/product');
 const ProductosList = require('../model/product');
 
 function GetProducts(){
@@ -15,6 +16,7 @@ function AddProducto(producto){
     descripcion: producto.descripcion,
     precio: producto.precio,
     stock: producto.stock,
+    imagen:producto.imagen,
   }
   ProductosList.push(_producto)
 }
@@ -41,6 +43,7 @@ function setNewValues(i, producto){
   ProductosList[i].descripcion = producto.descripcion;
   ProductosList[i].precio = producto.precio;
   ProductosList[i].stock = producto.stock;
+  productos[i].imagen=producto.imagen
 }
 
 module.exports = {

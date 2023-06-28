@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -53,8 +53,8 @@ import { DetailProductComponent } from './components/detail-product/detail-produ
     PedidoComponent,
     DetailProductComponent
   ],
-  imports: [
-    FormsModule,
+  imports: [   
+  FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -73,8 +73,7 @@ import { DetailProductComponent } from './components/detail-product/detail-produ
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    MatGridListModule,
-
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
