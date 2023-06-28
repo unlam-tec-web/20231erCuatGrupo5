@@ -54,8 +54,8 @@
     <div class="container-product" *ngFor="let producto of productos; let i=index">
       <div class="container-img-remove">
         <div>
-          <button (click)="eliminarProducto(i)" mat-icon-button aria-label="Eliminar producto">
-            <mat-icon>delete</mat-icon></button>
+          <button (click)="eliminarProducto(i)" mat-icon-button class="mat-icon-button" aria-label="Eliminar producto">
+            <mat-icon class="mat-icon-carrito">delete</mat-icon></button>
         </div>
         <div>
           <span> {{producto.productos.descripcion}} </span>
@@ -65,7 +65,7 @@
       <div class="container-add">
         <div>
           <button (click)="sumarCantidadProducto(i)" mat-icon-button aria-label="Agregar producto"
-            ><mat-icon>add</mat-icon></button>
+            ><mat-icon class="mat-icon-carrito">add</mat-icon></button>
         </div>
 
         <div>
@@ -74,13 +74,13 @@
 
         <div>
           <button (click)="restarCantidadProducto(i)" mat-icon-button aria-label="Descontar producto">
-            <mat-icon>remove</mat-icon>
+            <mat-icon class="mat-icon-carrito">remove</mat-icon>
           </button>
         </div>
 
       </div>
       <div>
-        <span> {{producto.cantidad}} unid</span>
+        <span class="unidad"> {{producto.cantidad}} unid</span>
       </div>
 
     </div>
@@ -88,9 +88,9 @@
   </div>
   <div class="container-precio-total">
     <div>
-      <p>Total</p>
+      <span class="total">Total</span>
     </div>
-    <div> <span>{{sumaTotal}} $</span></div>
+    <div> <span class="total">US${{sumaTotal}}</span></div>
   </div>
 
   <div class="example-button-row">
