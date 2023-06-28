@@ -1,5 +1,5 @@
 <div class="container-detalle" *ngIf="producto; else msg">
-    <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-list class="mat-grid-list" cols="2" rowHeight="2:1">
         <mat-grid-tile class="mat-grid-tile">
             <img class="mat-grid-image" src={{producto.imagen}} alt="Image product">
         </mat-grid-tile>
@@ -7,7 +7,7 @@
         <mat-grid-tile class="mat-grid-tile">
             <div>
                 <h1 class="h1-title">{{producto.nombre}}</h1>
-               <!-- <p class="p-brand">{{producto.marca}}</p>-->
+                <p class="p-brand">{{producto.marca}}</p>
                 <mat-divider class="mat-divider"></mat-divider>
                 <span class="span-price">USD${{producto.precio}}</span>
                 <p>{{producto.descripcion}}</p>

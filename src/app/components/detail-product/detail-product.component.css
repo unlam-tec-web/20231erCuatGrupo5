@@ -1,5 +1,9 @@
 .mat-grid-tile{
-    padding: 3em 0;
+    padding: 7em 1em;
+}
+.mat-grid-image{
+    max-width: 400px;
+    max-height: 400px;
 }
 .h1-title{
     margin: 0;
