@@ -116,3 +116,8 @@ nav {
 .unidad {
   padding-right: 1em;
 }
+.div-img-des {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}

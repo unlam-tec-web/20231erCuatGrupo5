@@ -4,4 +4,6 @@ export interface product {
   precio: number;
   stock: number;
   imagen:string;
+  marca:string;
+  nombre:string;
 }

@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ProductService } from 'src/service/product-service/product.service';
 
 // @ts-ignore
@@ -16,13 +16,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getProductos(): any[] {
+  /*getProductos(): any[] {
     this.productService.getProductosPorDescuento()
       .subscribe(values => {
         this.productosInicio = values;
         console.log(this.productosInicio);
       });
     return this.productosInicio;
-  }
+  }*/
 
 }

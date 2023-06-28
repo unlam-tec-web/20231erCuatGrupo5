@@ -57,8 +57,8 @@
           <button (click)="eliminarProducto(i)" mat-icon-button class="mat-icon-button" aria-label="Eliminar producto">
             <mat-icon class="mat-icon-carrito">delete</mat-icon></button>
         </div>
-        <div>
-          <span> {{producto.productos.descripcion}} </span>
+        <div class="div-img-des">
+          {{producto.productos.nombre}}
           <img alt="Imagen Pequeña" class="small-image" src={{producto.productos.imagen}}>
         </div>
       </div>

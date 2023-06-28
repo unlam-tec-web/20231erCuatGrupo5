@@ -1,6 +1,4 @@
-import { JsonPipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { product } from 'src/app/model/product';
 import { CarritoService } from 'src/service/carrito.service';
 import { ProductService } from 'src/service/product-service/product.service';
@@ -21,11 +19,16 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getProductos();
+  }
+
+  getProductos(): product[] {
     this.sus= this.productService.getLocalProducts()
     .subscribe((data:product[])=>{
-    this.productos=data;
-    })
-   }
+      this.productos=data;
+    });
+    return this.productos;
+  }
 
   AgregarProducto(producto, index: number) {
     let product = {

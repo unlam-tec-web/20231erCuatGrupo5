@@ -17,6 +17,8 @@ function AddProducto(producto){
     precio: producto.precio,
     stock: producto.stock,
     imagen:producto.imagen,
+    marca:producto.marca,
+    nombre:producto.nombre
   }
   ProductosList.push(_producto)
 }

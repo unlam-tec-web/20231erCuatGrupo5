@@ -4,8 +4,8 @@
     <mat-card class="mat-card" *ngFor="let item of productos ; let i=index">
       <img mat-card-image class="mat-card-image" src={{item.imagen}} alt="Image product">
       <mat-card-header>
-        <mat-card-title class="mat-card-title"><a [routerLink]="['/products', item.id]">{{item.descripcion}}</a></mat-card-title>
-        <mat-card-subtitle class="mat-card-subtitle">{{item.stock}}</mat-card-subtitle>
+        <mat-card-title class="mat-card-title"><a [routerLink]="['/products', item.id]">{{item.nombre}}</a></mat-card-title>
+        <mat-card-subtitle class="mat-card-subtitle">{{item.marca}}</mat-card-subtitle>
       </mat-card-header>
       
       <mat-card-content>
