@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { isEmpty } from 'rxjs';
+import { PagoComponent } from 'src/app/components/pago/pago.component';
 
 
 @Injectable({
@@ -10,7 +13,7 @@ import { isEmpty } from 'rxjs';
   export class CarritoService {
   productos =Array();
   
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient,private _snackBar: MatSnackBar, private router: Router) {}
 /* agrego el producto, si da true en verificarCantidad se inserta en el array */ 
  existeProduto(id:number):boolean{
   if(this.carritoVacio()==false){
@@ -110,7 +113,15 @@ pagar(_total){
 
   this.http.post(url, datosPago).pipe(
     tap(response => {
-      console.log("Respuesta del servidor",response);
+      this._snackBar.openFromComponent(PagoComponent, {
+        duration: 3000,
+        horizontalPosition:'center',
+        verticalPosition: 'top'
+      });
+
+      setTimeout(() => {
+      this.router.navigate(['/home']); // Ruta del componente al que deseas redirigir
+      }, 3000); // Retraso en milisegundos antes de la redirección
     }),
     catchError(error => {
       // Aquí puedes manejar cualquier error que ocurra durante la solicitud
