@@ -63,9 +63,9 @@
       <ng-template matStepLabel><span class="span-data">Confirmar compra</span></ng-template>
       <div class="container-product" *ngFor="let producto of productos;">
         <div>
-          <span>{{producto["descripcion"]}}</span>
-          <span>  Cantidad:{{producto["cantidad"]}}</span>
-          <span>  {{producto["precio"]}}</span>
+          <span>{{producto.productos.descripcion}}</span>
+          <span>  Cantidad:{{producto.cantidad}}</span>
+          <span>  {{producto.precio}}</span>
         </div>
       </div>
       <div>

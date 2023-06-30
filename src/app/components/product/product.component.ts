@@ -30,14 +30,13 @@ export class ProductComponent implements OnInit {
     return this.productos;
   }
 
-  AgregarProducto(producto, index: number) {
+  AgregarProducto(producto) {
     let product = {
       cantidad: 1,
-      index: index,
+      id:producto.id,
       productos: producto
     }
-    this.carritoService.agregarProducto(product, index)
-    console.log(product);
-    console.log(product.productos.id)
+    this.carritoService.agregarProducto(product)
+   
   }
 }

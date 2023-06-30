@@ -12,13 +12,26 @@
                 <span class="span-price">USD${{producto.precio}}</span>
                 <p>{{producto.descripcion}}</p>
 
-                <div class="button-container">
-                    <input type="number" class="input" min="1" max="10" placeholder="1" value="1">
-
-                    <button mat-fab extended color="primary">
+                <div class="button-container"  >
+                    <div *ngIf="!existeProducto;then noExisteCarrito else existeEnCarrito"></div>
+                    
+                    <ng-template #noExisteCarrito> 
+                    <button mat-fab extended color="primary" (click)="AgregarProducto(producto)">
                         <mat-icon>shopping_cart</mat-icon>
                         <a>Agregar al carrito</a> 
                     </button>
+                </ng-template>
+
+                    <ng-template #existeEnCarrito> 
+
+                    <button mat-fab extended color="primary" (click)="eliminarProducto(producto)">
+                        <mat-icon>delete</mat-icon>
+                        <a>Eliminar del carrito</a> 
+                    </button>
+                </ng-template>
+               <!-- <input  type="number" class="input" min="1" max="10" placeholder="1" value="1">-->
+
+
                 </div>
 
                 <div class="container-enlaces">

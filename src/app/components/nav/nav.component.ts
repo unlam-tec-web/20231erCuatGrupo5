@@ -31,7 +31,7 @@ const productos = [
 })
 export class NavComponent {
 
-  productos = null;
+  productos ;
 
 
   closeResult: string;
@@ -42,6 +42,8 @@ export class NavComponent {
   constructor(private offcanvasService: NgbOffcanvas, alertConfig: NgbAlertConfig, private carritoService: CarritoService, private router: Router, private _pedidoService: PedidoService, public dialog : MatDialog) {
     alertConfig.type = 'success';
     alertConfig.dismissible = false;
+    this.productos = null;
+
 
 
   }
@@ -52,9 +54,9 @@ export class NavComponent {
 
   openEnd(content: TemplateRef<any>) {
     this.offcanvasService.open(content, { position: 'end' });
-    //this.productos=this.carritoService.MostrarProducto();
     this.verProductos();
     this.sumaTotalProductos()
+    console.log(this.productos)
 
 
   }
@@ -81,8 +83,9 @@ export class NavComponent {
 
 
   verProductos() {
+
     if (this.carritoService.MostrarProducto == null) {
-      this.productos = null;
+       this.productos = null;
     } else {
       this.productos = this.carritoService.MostrarProducto();
     }
@@ -96,7 +99,7 @@ export class NavComponent {
   }
   comprar() {
     this._pedidoService.setData(this.sumaTotal);
-    this._pedidoService.setProductos(this.productos);
+    this._pedidoService.setProductos(this.carritoService.MostrarProducto());
     this.router.navigate(['/pedido']);
   }
 
@@ -124,7 +127,10 @@ export class NavComponent {
   }
 
   eliminarProducto(index: number) {
+    
+    //this.carritoService.eliminarProducto(index)
     this.productos.splice(index, 1);
     this.sumaTotalProductos();
+    
   }
 }
