@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { tap, catchError } from 'rxjs/operators';
 import { isEmpty } from 'rxjs';
 
 
@@ -100,5 +101,21 @@ product.splice(i,1)
  
 
 }
+}
+pagar(_total){
+  const url ='http://localhost:3000/cart/pagar';; // Reemplaza esto con la URL real de tu servicio Node.js
+  const datosPago = {
+    total : _total
+  }; // Aquí debes agregar los datos que deseas enviar al servidor
+
+  this.http.post(url, datosPago).pipe(
+    tap(response => {
+      console.log("Respuesta del servidor",response);
+    }),
+    catchError(error => {
+      // Aquí puedes manejar cualquier error que ocurra durante la solicitud
+      throw error;
+    })
+  ).subscribe();
 }
 }

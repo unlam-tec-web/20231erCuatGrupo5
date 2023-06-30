@@ -2,6 +2,8 @@ import {FormBuilder, Validators} from '@angular/forms';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {PedidoService} from '../../../service/product-service/pedido.service'
+import {CarritoService} from '../../../service/carrito.service'
+
 
 
 @Component({
@@ -14,7 +16,7 @@ import {PedidoService} from '../../../service/product-service/pedido.service'
 export class PedidoComponent{
   sumaTotal: number=0;
   productos : any[];
-  constructor(private _formBuilder: FormBuilder,private router: Router,private _pedidoService : PedidoService) {
+  constructor(private _formBuilder: FormBuilder,private router: Router,private _pedidoService : PedidoService,private _carritoService : CarritoService) {
   }
 
   firstFormGroup = this._formBuilder.group({
@@ -31,7 +33,9 @@ export class PedidoComponent{
     this.productos = JSON.parse(localStorage.getItem("productos"));
     this.sumaTotal=this._pedidoService.getData();
   }
-  
+  pagar(){
+    this._carritoService.pagar(this.sumaTotal);
+  }
 }
 
   
