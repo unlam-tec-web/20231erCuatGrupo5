@@ -1,6 +1,7 @@
-import { JsonPipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { product } from 'src/app/model/product';
 import { CarritoService } from 'src/service/carrito.service';
+import { ProductService } from 'src/service/product-service/product.service';
 
 @Component({
   selector: 'app-product',
@@ -11,27 +12,31 @@ import { CarritoService } from 'src/service/carrito.service';
 export class ProductComponent implements OnInit {
   
 
-  @Input() productos: any[];
+  @Input() productos: product[]=[];
+  sus : any;
 
-
-  constructor(private carritoService:CarritoService) {
+  constructor(private carritoService:CarritoService,private productService: ProductService) {
   }
 
-  ngOnInit(): void { }
- AgregarProducto(producto,index:number){ 
-  let product={
-    cantidad:1,
-    index:index,
-    productos:producto
+  ngOnInit(): void {
+    this.getProductos();
   }
-this.carritoService.agregarProducto(product,index)
-console.log(product);
-console.log(product.productos.id)
 
- 
+  getProductos(): product[] {
+    this.sus= this.productService.getLocalProducts()
+    .subscribe((data:product[])=>{
+      this.productos=data;
+    });
+    return this.productos;
+  }
 
-
-
-}
-
+  AgregarProducto(producto) {
+    let product = {
+      cantidad: 1,
+      id:producto.id,
+      productos: producto
+    }
+    this.carritoService.agregarProducto(product)
+   
+  }
 }

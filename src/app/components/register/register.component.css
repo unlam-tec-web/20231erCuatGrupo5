@@ -1,4 +1,44 @@
-.dark-mode {
-  background-color: #333;
-  color: #fff;
+.card-container{
+  width: 80%; 
+}
+.card-container form{
+  width: 80%;
+  margin: auto;
+}
+.form-campos{
+  margin-bottom: 0.5em;
+}
+.form-campos label{
+  font-size: 16px;
+  padding-left: 0.5em;
+  padding-bottom: 0.5em;
+  padding-top: 1em;
+}
+.btn-registro{
+  padding: 1.5em;
+  font-size: 16px;
+}
+.a-inicio{
+  font-size: 16px;
+  color: #613c82;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0.5em 1em;
+}
+mat-form-field{
+  width: 80%;
+}
+form{
+  text-align: center;
+}
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled){
+  background-color: #fff;
+  border: 0.1em solid gray;
+}
+::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: #000;
+}
+mat-label{
+  background-color: transparent;
+  color: #000;
 }

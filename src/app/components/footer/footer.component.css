@@ -1,3 +1,13 @@
 .footer{
-    margin-top: 7em;
+    margin-top: 10em;
+    width: 100%;
+    padding-top: 3em;
+    text-align: center;
+}
+.footer h3{
+    padding: 1em 0;
+}
+.mat-divider {
+    color: #613c82;
+    background-color: #613c82;
 }

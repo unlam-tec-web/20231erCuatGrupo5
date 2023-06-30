@@ -1,47 +1,51 @@
-<nav class="navbar navbar-expand-lg navbar-light " color="primay">
-  <a class="navbar-brand" href="#">Logo</a>
+<nav class="navbar navbar-expand-lg navbar-light px-5">
+  <a class="navbar-brand" (click)="IrAInicio()">
+    <img src="../../../assets/img/ecommerce.png" alt="imagen-logo">
+    e-marca
+  </a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
     <form class="form-inline my-2 my-lg-0 mx-auto">
       <div class="input-group">
         <input class="form-control" type="search" placeholder="Buscar" aria-label="Buscar">
         <div class="input-group-append">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
+          <button class="btn" type="submit">
+            <mat-icon class="mat-icon-search">search</mat-icon>
+          </button>
         </div>
       </div>
     </form>
-  </div>
+  </div>-->
 
   <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-item-a" (click)="openDialog()">
+        <mat-icon class="mat-icon">person</mat-icon>
+        <span class="nav-item-span">Ingresar</span>
+      </a> 
+    </li>
 
     <li class="nav-item">
-
-      <a (click)="openEnd(content)"><i class="fi fi-rr-shopping-cart"></i></a>
+      <a (click)="openEnd(content)">
+        <mat-icon class="mat-icon">shopping_cart</mat-icon>
+      </a> 
     </li>
   </ul>
 </nav>
 
-
-
-
+<!--------------------------Panel de Carrito-------------------------->
 <ng-template #content let-offcanvas>
   <!--div class="offcanvas-header">
 		<h4 class="offcanvas-title">Offcanvas title</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
 	</div-->
   <mat-toolbar class="mat-toolbar-header">
-   
-      <mat-icon>shopping_cart</mat-icon> 
-   
-    <span> Mi Carrito</span>
-
-    <button (click)="cerrar()" (click)="offcanvas.close('Close click')" mat-icon-button class="example-spacer"
-      aria-label="Example icon-button with share icon">
+    <mat-icon>shopping_cart</mat-icon> 
+    <span>Mi Carrito</span>
+    <a (click)="cerrar()" (click)="offcanvas.close('Close click')" class="close-icon" aria-label="close-icon">
       <mat-icon>close</mat-icon>
-    </button>
+  </a>
   </mat-toolbar>
-
-
 
 
   <div *ngIf="sumaTotal!=0; then thenBlock else elseBlock"></div>
@@ -50,34 +54,33 @@
     <div class="container-product" *ngFor="let producto of productos; let i=index">
       <div class="container-img-remove">
         <div>
-          <button (click)="eliminarProducto(i)" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-            <mat-icon>delete</mat-icon></button>
-
+          <button (click)="eliminarProducto(i)" mat-icon-button class="mat-icon-button" aria-label="Eliminar producto">
+            <mat-icon class="mat-icon-carrito">delete</mat-icon></button>
         </div>
-        <div>
-
-          <img alt="Imagen Pequeña" class="small-image" src={{producto.productos.thumbnail}}>
+        <div class="div-img-des">
+          {{producto.productos.nombre}}
+          <img alt="Imagen Pequeña" class="small-image" src={{producto.productos.imagen}}>
         </div>
       </div>
       <div class="container-add">
         <div>
-          <button (click)="sumarCantidadProducto(i)" mat-icon-button aria-label="Example icon button with a vertical three dot icon"
-            ><mat-icon>add</mat-icon></button>
+          <button (click)="sumarCantidadProducto(i)" mat-icon-button aria-label="Agregar producto"
+            ><mat-icon class="mat-icon-carrito">add</mat-icon></button>
         </div>
 
         <div>
-          <span>{{producto.productos.price}}</span>
+          <span>{{producto.productos.precio}}</span>
         </div>
 
         <div>
-          <button (click)="restarCantidadProducto(i)" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-            <mat-icon>remove</mat-icon>
+          <button (click)="restarCantidadProducto(i)" mat-icon-button aria-label="Descontar producto">
+            <mat-icon class="mat-icon-carrito">remove</mat-icon>
           </button>
         </div>
 
       </div>
       <div>
-        <span> {{producto.cantidad}} unid</span>
+        <span class="unidad"> {{producto.cantidad}} unid</span>
       </div>
 
     </div>
@@ -85,20 +88,19 @@
   </div>
   <div class="container-precio-total">
     <div>
-      <p>Total</p>
+      <span class="total">Total</span>
     </div>
-    <div> <span>{{sumaTotal}} $</span></div>
+    <div> <span class="total">US${{sumaTotal}}</span></div>
   </div>
 
   <div class="example-button-row">
-    <button mat-button color="primary">Comprar</button>
+    <button mat-button color="primary" (click)="offcanvas.close()" (click)="comprar()">Finalizar compra</button>
   </div></ng-template>
-  <ng-template #elseBlock><p>
-    <ngb-alert> No posees aun productos en el carrito de compras </ngb-alert>
-  </p>
-  <button mat-button color="primary">Ir a ver productos</button></ng-template>
-
-
- 
+  <ng-template #elseBlock>
+    <p>
+      <ngb-alert> No posees aun productos en el carrito de compras </ngb-alert>
+    </p>
+    <a class="a-productos" href="">Ir a ver productos</a>
+</ng-template>
 
 </ng-template>

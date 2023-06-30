@@ -1,0 +1,39 @@
+.login-component{
+    background-color: #fff;
+    padding: 5em;
+}
+#container-btn-close{
+    background-color: #613c82;
+}
+.close-icon  {
+    margin-left: 50%;
+    padding: 0.5em;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+}
+.close-icon:hover{
+    background-color: transparent;
+}
+.form-campos{
+    margin-bottom: 0.5em;
+}
+.form-campos label{
+    font-size: 16px;
+    padding-bottom: 0.5em;
+    padding-top: 1em;
+}
+  .btn-login{
+    margin-top: 2em;
+    margin-bottom: 1em;
+    padding: 1.5em;
+    font-size: 16px;
+  }
+  #a-registro{
+    font-size: 16px;
+  }
+  #a-registro a{
+    color: #613c82;
+    cursor: pointer;
+  }

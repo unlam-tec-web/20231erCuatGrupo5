@@ -1,90 +1,104 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { isEmpty } from 'rxjs';
 
 
 @Injectable({
     providedIn: 'root'
   })
   export class CarritoService {
-  productos=[];
+  productos =Array();
   
     constructor(private http: HttpClient) {}
+/* agrego el producto, si da true en verificarCantidad se inserta en el array */ 
+ existeProduto(id:number):boolean{
+  if(this.carritoVacio()==false){
+    let producto=[];
+    producto=JSON.parse(localStorage.getItem("carrito"))
+    for(let i=0 ; i< producto.length; i++){
+      console.log(producto[i].id)
+      if(producto[i].id==id){
+        console.log("producto  existe")
 
- 
-    agregarProducto(producto,id:number) {
-    
-      if(this.verificarCantidad(id)){
-        this.productos.push(producto);
-
-        localStorage.setItem("carrito",JSON.stringify(this.productos))
-        alert("el producto se guardo correctamente")
+        return true;
       }
-      
- 
+    }
+  }
+  console.log("producto no existe")
+  return false;
+ }
+    agregarProducto(producto:any) {
+     
+      if (this.carritoVacio() ){
+       
+        this.productos.push(producto);
+        localStorage.setItem("carrito",JSON.stringify(this.productos))
+      }else if(!this.existeProduto(producto.id)){
+
+this.productos.push(producto)
+localStorage.setItem("carrito",JSON.stringify(this.productos))
+console.log("se guardo")
+      }
+
+
+      }
+     
+      carritoVacio():boolean{
+       let product=JSON.parse(localStorage.getItem("carrito"))
+       if(product==null){
+        return true
+       }
+       return false
       }
     //guardo los productos del localstorage en una variable y lo retorno
       MostrarProducto() {
-       let product=JSON.parse(localStorage.getItem("carrito"))
-       if(product==null){
-      return null;
-       }else{
-        return product;
-        
-       }
-        
-   
-      }
-
-      verificarCantidad(id:number){
-      let boolean;
         let product=null;
-        product=this.MostrarProducto()
+        product=JSON.parse(localStorage.getItem("carrito"))
+       if(!this.carritoVacio()){
+      return product;
+       }
+      }
+      /*verifica que si se puede insertar el producto, si ya existe no se podra insertar*/ 
+     verificarSiExisteEnCarrito(id:number){
+      let boolean;
+         let product=this.MostrarProducto()
         if(product==null){
-          boolean= true;
+         return boolean= false;
         }else{
          
      for(let i=0 ; i< product.length; i++){
-      if(product[i].productos.id!=id){
-          boolean= true;
-       
+      console.log(product[i].productos.id==id)
+      if(product[i].productos.id==id){
+           boolean= true;
+          
+          break
         }else{
-          boolean =false;
-          alert("el producto ya existe en su carrito")
+           return boolean =false;
         }
+        
         }
-
       
       }
        return  boolean;
   }
 
- /* sumarCantidadProducto(index:number){
-  this.productos[index].cantidad=this.productos[index].cantidad + 1;
-   this.sumaTotalProductos;
-   return this.productos
+
+eliminarProducto(id:number){
+ let product=this.MostrarProducto()
+  console.log(product)
+  for(let i=0 ; i< product.length; i++){
+    if(product[i].id==id){
+
+product.splice(i,1)  
+}
+  }
+
+  if(product.length>0){
+    localStorage.setItem("carrito", JSON.stringify(product));    
+  }else{
+    localStorage.clear();
  
-}
-
-restarCantidadProducto(index:number){
- this.productos[index].cantidad=this.productos[index].cantidad - 1;
- this.sumaTotalProductos(this.productos);
-
- if(this.productos[index].cantidad==0){
-  this.eliminarProducto(index);
- }
-}
-
-sumaTotalProductos(producto:any[]){
-  let suma=0;
-for(let i=0 ; i< producto.length; i++){
-  suma=+(producto[i].productos.price * producto[i].cantidad);
-}
-return suma;
 
 }
-
-eliminarProducto(index:number){
- this.productos.splice(index,1);
- this.sumaTotalProductos(this.productos);
-}*/
+}
 }

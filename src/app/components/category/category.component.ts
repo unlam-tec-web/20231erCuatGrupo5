@@ -12,7 +12,7 @@ export class CategoryComponent {
   constructor(private productService: ProductService) {
   }
 
-  ngOnInit(): void {
+ /* ngOnInit(): void {
     this.getProductos();
   }
 
@@ -22,6 +22,6 @@ export class CategoryComponent {
       this.productos = values.products;
     });
     return this.productos;
-  }
+  }*/
 
 }
