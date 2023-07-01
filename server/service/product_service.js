@@ -18,7 +18,9 @@ function AddProducto(producto){
     stock: producto.stock,
     imagen:producto.imagen,
     marca:producto.marca,
-    nombre:producto.nombre
+    nombre:producto.nombre,
+    clasificacion: producto.clasificacion
+
   }
   ProductosList.push(_producto)
 }

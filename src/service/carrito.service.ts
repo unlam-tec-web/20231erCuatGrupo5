@@ -131,11 +131,12 @@ pagar(_total){
 }
 contarProductos(){
   let cant;
-  cant=this.MostrarProducto()
- if(cant!=undefined){
- return cant.length
-}else{
-return 0;}
+  cant=this.MostrarProducto();
+  if(cant!=undefined){
+    return cant.length;
+  }else{
+    return 0;
+  }
 }
 
 }

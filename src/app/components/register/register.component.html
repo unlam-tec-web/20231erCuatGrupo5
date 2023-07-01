@@ -46,6 +46,15 @@
                   <input matInput type="password" formControlName="contrasenia" id="typePasswordX-2" class="form-control " name="contrasenia"/>
                   <mat-error *ngIf="formRegistro.get('contrasenia').hasError('required')">La contraseña es obligatoria</mat-error>
                   <mat-error *ngIf="formRegistro.get('contrasenia').hasError('minlength')">La contraseña debe tener 8 (ocho) caracteres como mínimo</mat-error>
+                  <mat-error *ngIf="formRegistro.get('contrasenia').hasError('pattern')">La contraseña debe tener al menos: 
+                    <div><ul>
+                      <li>Una mayúscula</li>
+                      <li>Una minúscula</li>
+                      <li>Un número</li>
+                      <li>Un carácter especial .-@</li>
+                      <li>No debe poseer espacios</li>
+                    </ul></div>
+                  </mat-error>
                 </mat-form-field>
               </div>
               <div class="mb-2 mt-4 d-flex justify-content-center align-items-end">

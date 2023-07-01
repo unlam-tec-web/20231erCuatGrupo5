@@ -6,7 +6,8 @@ const productos = [
     stock: 10,
     imagen:"https://www.naldo.com.ar/medias/505333.jpg-515Wx515H?context=bWFzdGVyfHJvb3R8MjY3OTd8aW1hZ2UvanBlZ3xoMTAvaDE5Lzk3MTA3ODgyNDc1ODIuanBnfDFiZmU2MTQ1ZTAxY2Q1YTI1Mzg2NGJmYWMxMGUyYTgyOTMwNTRhMGRkMzhmYzc4Yjk4ZGFlZTM5OTE2YmYwOWI",
     nombre: "Sansei TDS22-UIPI",
-    marca: "Sansei"
+    marca: "Sansei",
+    clasificacion: "Televisores"
     },
   {
     id: 2,
@@ -15,7 +16,8 @@ const productos = [
     stock: 15,
     imagen:"https://www.lavoz.com.ar/resizer/jRDaSteLMh4RMfiD0KFM0BO-p0w=/980x640/smart/filters:quality(75):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/RNQWV7HMPNA2DACYS6HUBWUW3E.jpg",
     nombre:"Motorola Edge 30",
-    marca:"Motorola"
+    marca:"Motorola",
+    clasificacion:"Celulares"
   },
   {
     id: 3,
@@ -24,7 +26,8 @@ const productos = [
     stock: 5,
     imagen:"https://www.lenovo.com/medias/lenovo-laptops-thinkbook-16-gen-4-intel-hero.png?context=bWFzdGVyfHJvb3R8MzQ1OTM2fGltYWdlL3BuZ3xoMjEvaGZkLzEzMjU1MTI1OTkxNDU0LnBuZ3xlMGJjMDAyZjIzYzczYmY0YTY3NTlmODcwMDJjZTBhMzg5M2VlMjFlNTNlZWJkZDMyNDA3MTdlNjc3NjhhZWY5",
     nombre: "ThinkBook 16 Gen 4",
-    marca: "Lenovo"
+    marca: "Lenovo",
+    clasificacion:"Portátiles"
   },
   {
     id: 4,
@@ -33,7 +36,8 @@ const productos = [
     stock: 20,
     imagen:"https://images.fravega.com/f500/72caeb38f29a19a3af8f1d83738132c2.jpg",
     nombre:"Auriculares Candy Spark",
-    marca:"Daewoo"
+    marca:"Daewoo",
+    clasificacion:"Audio"
   },
   {
     id: 5,
@@ -42,7 +46,8 @@ const productos = [
     stock: 8,
     imagen:"https://http2.mlstatic.com/D_NQ_NP_801173-MLA54576221801_032023-O.webp",
     nombre:"Mini cámara",
-    marca: "Electroland"
+    marca: "Electroland",
+    clasificacion:"Cámaras"
   },
   {
     id: 6,
@@ -51,7 +56,8 @@ const productos = [
     stock: 12,  
     imagen:"https://stylewatch.vtexassets.com/arquivos/ids/233579-500-auto?v=638188815112030000&width=500&height=auto&aspect=true",
     nombre:"PlayStation 5",
-    marca:"Sony"
+    marca:"Sony",
+    clasificacion:"Consolas"
   },
   {
     id: 7,
@@ -60,7 +66,8 @@ const productos = [
     stock: 18,
     imagen:"https://images.fravega.com/f500/f20792e0c9182452979637ae6785999a.jpg",
     nombre:"EXTRA BASS SRS XB13",
-    marca: "Sony"
+    marca: "Sony",
+    clasificacion:"Audio"
   },
   {
     id: 8,
@@ -69,7 +76,8 @@ const productos = [
     stock: 10,
     imagen:"https://http2.mlstatic.com/D_NQ_NP_2X_800672-MLA54074914761_022023-F.webp",
     nombre:"Sartwatch DT NO.1 DT100",
-    marca:"DT"
+    marca:"DT",
+    clasificacion:"Accesorios"
   },
   {
     id: 9,
@@ -78,7 +86,8 @@ const productos = [
     stock: 6, 
     imagen:"https://www.lenovo.com/medias/mkt-hero.png?context=bWFzdGVyfHJvb3R8MjM1NTEwfGltYWdlL3BuZ3xoNzIvaDBmLzE1ODY4NzEwOTQ0Nzk4LnBuZ3xmNzRmYmVmYmI5YTljMTI0OTY2MzRlNTgzYWRiZjE0MDVmMjI2ODZmN2E0M2FjNjQ5NDRmNjQ1Y2ZmOGVlNWQz",
     nombre:"Lenovo Tab P12 Pro",
-    marca: "Lenovo"
+    marca: "Lenovo",
+    clasificacion:"Tabletas"
   },
   {
     id: 10,
@@ -87,7 +96,8 @@ const productos = [
     stock: 10,
     imagen:"https://http2.mlstatic.com/D_NQ_NP_965805-MLA48319236376_112021-O.webp",
     nombre: "Epson Ecotank L8180",
-    marca: "Epson"
+    marca: "Epson",
+    clasificacion:"Impresoras"
   }
 ];
 

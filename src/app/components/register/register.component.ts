@@ -20,8 +20,8 @@ export class RegisterComponent implements OnInit{
     nombre: ['', Validators.required],
     apellido: ['', Validators.required],
     direccion: ['', Validators.required],
-    email: ['', [Validators.required,Validators.pattern('^[a-z]+[a-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$')]],
-    contrasenia: ['', [Validators.required, Validators.minLength(8)]]
+    email: ['', [Validators.required,Validators.pattern(/^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/)]], 
+    contrasenia: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\-\.$!%*?&])([A-Za-z\d\-\.$!%*?&]|[^ ]){8,15}$/)]]
   })
   
   ngOnInit(): void {
