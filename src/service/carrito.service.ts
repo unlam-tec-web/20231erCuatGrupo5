@@ -128,6 +128,7 @@ pagar(_total){
       throw error;
     })
   ).subscribe();
+  localStorage.clear();
 }
 contarProductos(){
   let cant;

@@ -51,3 +51,24 @@ button{
     background-color: #fff;
     color: #000;
  }
+ .sin-productos-banner {
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Color de fondo del banner */
+    color: #613c82; /* Color de texto del banner */
+    padding: 10px 20px;
+    text-align: center;
+    flex-direction: column;
+  }
+  
+  .mensaje {
+    font-weight: bold;
+    margin-bottom: 5rem;
+  }
+  
+  .a-productos{
+    color: #613c82;
+    text-align: center;
+    font-size: 16px;
+  }

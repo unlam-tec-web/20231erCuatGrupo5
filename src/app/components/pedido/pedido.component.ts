@@ -17,6 +17,7 @@ import { MatSortModule } from '@angular/material/sort';
 })
 
 export class PedidoComponent implements OnInit{
+  existProducts:boolean=false
   sumaTotal: number=0;
   listaProd : any[];
   columnas: string[] = ['descripcion', 'cantidad', 'precio'];
@@ -35,13 +36,24 @@ export class PedidoComponent implements OnInit{
   });
 
   ngOnInit() {
-    this.listaProd = JSON.parse(localStorage.getItem("carrito"));
-    console.log(this.listaProd);
-    this.sumaTotal=this._pedidoService.getData();
-    console.log(this.sumaTotal);
+    this.ContainProducts();
+    if(this.listaProd){
+      this.listaProd = JSON.parse(localStorage.getItem("carrito"));
+      console.log(this.listaProd);
+      this.sumaTotal=this._pedidoService.getData();
+      console.log(this.sumaTotal);
+    }
   }
   pagar(){
     this._carritoService.pagar(this.sumaTotal);
+  }
+  ContainProducts(){
+    this.listaProd = JSON.parse(localStorage.getItem("carrito"));
+    if(this.listaProd.length>0){
+      this.existProducts= true
+      return this.existProducts
+    }
+      return this.existProducts
   }
 }
 

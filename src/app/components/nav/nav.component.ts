@@ -134,6 +134,7 @@ cantProductos;
     this.productos.splice(index, 1);
     this.sumaTotalProductos();
     this.contarProductos();
+    localStorage.setItem("carrito", JSON.stringify(this.productos));
   }
   contarProductos(){
    
