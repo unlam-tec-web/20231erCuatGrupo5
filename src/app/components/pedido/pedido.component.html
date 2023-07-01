@@ -1,3 +1,4 @@
+<div>
 <div class="pantalla">
   <mat-stepper linear #stepper>
     <mat-step [stepControl]="firstFormGroup">
@@ -61,13 +62,31 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel><span class="span-data">Confirmar compra</span></ng-template>
-      <div class="container-product" *ngFor="let producto of productos;">
-        <div>
-          <span>{{producto.productos.descripcion}}</span>
-          <span>  Cantidad:{{producto.cantidad}}</span>
-          <span>  {{producto.precio}}</span>
-        </div>
-      </div>
+      <table mat-table [dataSource]="listaProd" class="mat-elevation-z8">
+
+        <!-- Descripción Column -->
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef> Descripción </th>
+          <td mat-cell *matCellDef="let producto"> {{ producto.productos.descripcion }} </td>
+        </ng-container>
+      
+        <!-- Cantidad Column -->
+        <ng-container matColumnDef="cantidad">
+          <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+          <td mat-cell *matCellDef="let producto"> {{ producto.cantidad }} </td>
+        </ng-container>
+      
+        <!-- Precio Column -->
+        <ng-container matColumnDef="precio">
+          <th mat-header-cell *matHeaderCellDef> Precio </th>
+          <td mat-cell *matCellDef="let producto"> {{ producto.productos.precio }} </td>
+        </ng-container>
+      
+        <!-- Columnas de la tabla -->
+        <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+      </table>
+      
       <div>
         <button mat-raised-button color="primary" >Atrás</button>
         <button mat-raised-button (click)="stepper.reset()">Reestablecer datos</button>

@@ -99,7 +99,6 @@ export class NavComponent {
   }
   comprar() {
     this._pedidoService.setData(this.sumaTotal);
-    this._pedidoService.setProductos(this.carritoService.MostrarProducto());
     this.router.navigate(['/pedido']);
   }
 

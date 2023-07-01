@@ -128,5 +128,6 @@ pagar(_total){
       throw error;
     })
   ).subscribe();
-}
+    localStorage.clear();
+  }
 }
