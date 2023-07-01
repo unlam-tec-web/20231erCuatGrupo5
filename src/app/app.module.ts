@@ -20,6 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 /* Componentes propios */
 import { AppComponent } from './app.component';
@@ -35,6 +36,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CategoryComponent } from './components/category/category.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
+import { PagoComponent } from './components/pago/pago.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { DetailProductComponent } from './components/detail-product/detail-produ
     RegisterComponent,
     CategoryComponent,
     PedidoComponent,
-    DetailProductComponent
+    DetailProductComponent,
+    PagoComponent
   ],
   imports: [   
   FormsModule,
@@ -73,7 +76,8 @@ import { DetailProductComponent } from './components/detail-product/detail-produ
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
