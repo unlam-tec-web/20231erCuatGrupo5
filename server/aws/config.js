@@ -1,11 +1,12 @@
 const AWS = require('aws-sdk');
 const jwt_decode = require('jwt-decode');
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
+const CREDENTIALS = require('../CREDENTIALS')
 let cognitoAttributeList = [];
 
 const poolData = {
-  UserPoolId : process.env.AWS_COGNITO_USER_POOL_ID,
-  ClientId : process.env.AWS_COGNITO_CLIENT_ID
+  UserPoolId : CREDENTIALS.AWS_COGNITO_USER_POOL_ID,
+  ClientId : CREDENTIALS.AWS_COGNITO_CLIENT_ID
 };
 
 const attributes = (key, value) => {
@@ -39,19 +40,19 @@ function getUserPool(){
   return new AmazonCognitoIdentity.CognitoUserPool(poolData);
 }
 
+function initAWS (region = CREDENTIALS.AWS_COGNITO_REGION, identityPoolId = CREDENTIALS.AWS_COGNITO_IDENTITY_POOL_ID) {
+  AWS.config.region = region; // Region
+  AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: identityPoolId,
+  });
+}
+
 function getAuthDetails(email, password) {
   var authenticationData = {
     Username: email,
     Password: password,
   };
   return new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
-}
-
-function initAWS (region = process.env.AWS_COGNITO_REGION, identityPoolId = process.env.AWS_COGNITO_IDENTITY_POOL_ID) {
-  AWS.config.region = region; // Region
-  AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: identityPoolId,
-  });
 }
 
 function decodeJWTToken(token) {

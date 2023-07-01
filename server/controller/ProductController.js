@@ -1,7 +1,7 @@
 //DEPENDENCIAS NODE
 const express = require("express");
-const router = express.Router();
 const service = require('../service/product_service');
+const router = express.Router();
 
 //LISTAR TODOS LOS PRODUCTOS
 router.get('/GetProducts', (req, res) => {

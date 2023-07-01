@@ -1,3 +1,4 @@
+const cognito = require('../aws/config')
 const usuarios = [
   {
     "id": 1,
@@ -61,4 +62,11 @@ const usuarios = [
   }
 ]
 
-module.exports = usuarios;
+function pool() {
+  return pool = cognito.getUserPool();
+}
+
+module.exports = {
+  usuarios,
+  pool
+};

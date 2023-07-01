@@ -1,6 +1,6 @@
 const express = require("express");
-const router = express.Router();
 const service = require('../service/carrito_service.js');
+const router = express.Router();
 
 router.post('/pagar', (req, res) => {
     const CompraRequest = req.body;

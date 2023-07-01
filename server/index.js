@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
+const CREDENTIALS = require('./CREDENTIALS');
+const u = require('./aws/config')
+
 app.use(cors());
 // Dependencias y configuraciones adicionales
 
@@ -20,6 +23,9 @@ app.use('/cart', cartController);
 function InitServer() {
   app.listen(3000, () => {
     console.log('Servidor iniciado en el puerto 3000');
+    console.log("LLEGUE")
+    console.log(u.getAuthDetails('prueba@prueba.com', 'Tallerweb2#'))
+    console.log(u.setCognitoAttributeList('prueba2@prueba.com'))
   });
 }
 
