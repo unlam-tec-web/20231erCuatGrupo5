@@ -20,6 +20,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProductos();
+    this.contarProductos();
   }
 
   getProductos(): product[] {
@@ -37,6 +38,12 @@ export class ProductComponent implements OnInit {
       productos: producto
     }
     this.carritoService.agregarProducto(product)
+    this.contarProductos();
+
    
   }
+  contarProductos(){
+    return this.carritoService.contarProductos()
+ 
+}
 }

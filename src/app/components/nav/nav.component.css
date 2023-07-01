@@ -77,7 +77,7 @@ nav {
   background-color: transparent;
 }
 .container{
-  height: 200px; /* Establece la altura máxima deseada */
+  height: 400px; /* Establece la altura máxima deseada */
   overflow: auto; 
   padding: 0px;
   border-top: 1px solid #ccc;

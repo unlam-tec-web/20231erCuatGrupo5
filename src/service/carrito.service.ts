@@ -16,12 +16,12 @@ import { PagoComponent } from 'src/app/components/pago/pago.component';
     constructor(private http: HttpClient,private _snackBar: MatSnackBar, private router: Router) {}
 /* agrego el producto, si da true en verificarCantidad se inserta en el array */ 
  existeProduto(id:number):boolean{
-  if(this.carritoVacio()==false){
+  if(this.carritoVacio()===false){
     let producto=[];
     producto=JSON.parse(localStorage.getItem("carrito"))
     for(let i=0 ; i< producto.length; i++){
       console.log(producto[i].id)
-      if(producto[i].id==id){
+      if(producto[i].id===id){
         console.log("producto  existe")
 
         return true;
@@ -71,8 +71,7 @@ console.log("se guardo")
         }else{
          
      for(let i=0 ; i< product.length; i++){
-      console.log(product[i].productos.id==id)
-      if(product[i].productos.id==id){
+      if(product[i].productos.id===id){
            boolean= true;
           
           break
@@ -91,7 +90,7 @@ eliminarProducto(id:number){
  let product=this.MostrarProducto()
   console.log(product)
   for(let i=0 ; i< product.length; i++){
-    if(product[i].id==id){
+    if(product[i].id===id){
 
 product.splice(i,1)  
 }
@@ -104,6 +103,7 @@ product.splice(i,1)
  
 
 }
+this.contarProductos();
 }
 pagar(_total){
   const url ='http://localhost:3000/cart/pagar';; // Reemplaza esto con la URL real de tu servicio Node.js
@@ -128,6 +128,14 @@ pagar(_total){
       throw error;
     })
   ).subscribe();
-    localStorage.clear();
-  }
+}
+contarProductos(){
+  let cant;
+  cant=this.MostrarProducto()
+ if(cant!=undefined){
+ return cant.length
+}else{
+return 0;}
+}
+
 }
