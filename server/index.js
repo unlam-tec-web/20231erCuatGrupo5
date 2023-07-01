@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
+const CREDENTIALS = require('./CREDENTIALS');
+const u = require('./aws/config')
+
 app.use(cors());
 // Dependencias y configuraciones adicionales
 
@@ -20,6 +23,10 @@ app.use('/cart', cartController);
 function InitServer() {
   app.listen(3000, () => {
     console.log('Servidor iniciado en el puerto 3000');
+    console.log('UserPoolId:', CREDENTIALS.AWS_COGNITO_USER_POOL_ID);
+    console.log('ClientId:', CREDENTIALS.AWS_COGNITO_CLIENT_ID);
+
+    console.log(u.getUserPool())
   });
 }
 

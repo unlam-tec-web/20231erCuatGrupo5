@@ -1,7 +1,9 @@
 'use strict';
-global.fetch = require('node-fetch');
+//global.fetch = require('node-fetch');
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+
 require('dotenv').config();
-const Cognito = require('./cognito.service');
+const Cognito = require('./cognito_service');
 //si no levanta instalar npm install node-fetch@2
 
 const body = {

@@ -1,11 +1,12 @@
 const AWS = require('aws-sdk');
 const jwt_decode = require('jwt-decode');
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
+const CREDENTIALS = require('../CREDENTIALS')
 let cognitoAttributeList = [];
 
 const poolData = {
-  UserPoolId : process.env.AWS_COGNITO_USER_POOL_ID,
-  ClientId : process.env.AWS_COGNITO_CLIENT_ID
+  UserPoolId : CREDENTIALS.AWS_COGNITO_USER_POOL_ID,
+  ClientId : CREDENTIALS.AWS_COGNITO_CLIENT_ID
 };
 
 const attributes = (key, value) => {
