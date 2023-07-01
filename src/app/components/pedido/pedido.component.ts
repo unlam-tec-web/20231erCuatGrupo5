@@ -1,8 +1,11 @@
 import {FormBuilder, Validators} from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {PedidoService} from '../../../service/product-service/pedido.service'
 import {CarritoService} from '../../../service/carrito.service'
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -13,9 +16,11 @@ import {CarritoService} from '../../../service/carrito.service'
   
 })
 
-export class PedidoComponent{
+export class PedidoComponent implements OnInit{
   sumaTotal: number=0;
-  productos : any[];
+  listaProd : any[];
+  columnas: string[] = ['descripcion', 'cantidad', 'precio'];
+
   constructor(private _formBuilder: FormBuilder,private router: Router,private _pedidoService : PedidoService,private _carritoService : CarritoService) {
   }
 
@@ -30,8 +35,10 @@ export class PedidoComponent{
   });
 
   ngOnInit() {
-    this.productos = JSON.parse(localStorage.getItem("productos"));
+    this.listaProd = JSON.parse(localStorage.getItem("carrito"));
+    console.log(this.listaProd);
     this.sumaTotal=this._pedidoService.getData();
+    console.log(this.sumaTotal);
   }
   pagar(){
     this._carritoService.pagar(this.sumaTotal);

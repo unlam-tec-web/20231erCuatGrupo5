@@ -16,7 +16,4 @@ export class PedidoService {
   getData() {
     return this.totalCarrito;
   }
-  setProductos(_productos: any[]){
-    localStorage.setItem("productos",JSON.stringify(_productos));
-  }
 }

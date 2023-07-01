@@ -135,5 +135,7 @@ contarProductos(){
  if(cant!=undefined){
  return cant.length
 }else{
-return 0;}}
+return 0;}
+}
+
 }
