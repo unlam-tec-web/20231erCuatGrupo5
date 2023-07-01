@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-
+import { NavComponent } from '../nav/nav.component';
 import {LoginComponent} from "../login/login.component";
 
 @Component({
@@ -10,7 +10,7 @@ import {LoginComponent} from "../login/login.component";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public dialog : MatDialog) { }
+  constructor(public dialog : MatDialog,public navComponet:NavComponent) { }
 
   ngOnInit() {
   }

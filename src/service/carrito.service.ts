@@ -100,5 +100,13 @@ product.splice(i,1)
  
 
 }
+this.contarProductos();
 }
+contarProductos(){
+  let cant;
+  cant=this.MostrarProducto()
+ if(cant!=undefined){
+ return cant.length
+}else{
+return 0;}}
 }

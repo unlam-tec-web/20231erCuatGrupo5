@@ -8,20 +8,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {LoginComponent} from "../login/login.component";
 
 
-const productos = [
-  {
-    "descripcion": "Celular samsung S23",
-    "cantidad": 1,
-    "imagen": "assets/img/Header.png",
-    "precio": 60000
-  },
-  {
-    "descripcion": "Celular samsung A04e", "imagen": "assets/img/shopping.jpg",
-    "cantidad": 1, "precio": 14000
-  },
 
-
-];
 
 @Component({
   selector: 'app-nav',
@@ -29,10 +16,10 @@ const productos = [
   styleUrls: ['./nav.component.css']
 
 })
-export class NavComponent {
+export class NavComponent implements OnInit{
 
   productos ;
-
+cantProductos;
 
   closeResult: string;
   // productos = productos;
@@ -43,9 +30,15 @@ export class NavComponent {
     alertConfig.type = 'success';
     alertConfig.dismissible = false;
     this.productos = null;
+    this.contarProductos();
+  
 
 
 
+  }
+  ngOnInit(): void {
+    this.contarProductos();
+ 
   }
 
   IrAInicio() {
@@ -53,11 +46,12 @@ export class NavComponent {
   }
 
   openEnd(content: TemplateRef<any>) {
-    this.offcanvasService.open(content, { position: 'end' });
+    this.offcanvasService.open(content, { position: 'end',animation:true });
     this.verProductos();
+   
     this.sumaTotalProductos()
     console.log(this.productos)
-
+    this.contarProductos()
 
   }
 
@@ -70,6 +64,7 @@ export class NavComponent {
       localStorage.setItem("carrito", JSON.stringify(this.productos));
 
     }
+    this.contarProductos();
 
 
   }
@@ -77,7 +72,9 @@ export class NavComponent {
   openDialog():void{
     const dialogRef = this.dialog.open(LoginComponent,{},);
     dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
+      console.log("se cerro "+res)
+
+   
     });
   }
 
@@ -89,6 +86,7 @@ export class NavComponent {
     } else {
       this.productos = this.carritoService.MostrarProducto();
     }
+    this.contarProductos();
 
   }
 
@@ -101,6 +99,8 @@ export class NavComponent {
     this._pedidoService.setData(this.sumaTotal);
     this._pedidoService.setProductos(this.carritoService.MostrarProducto());
     this.router.navigate(['/pedido']);
+    this.contarProductos();
+
   }
 
   restarCantidadProducto(index: number) {
@@ -110,6 +110,8 @@ export class NavComponent {
     if (this.productos[index].cantidad == 0) {
       this.eliminarProducto(index);
     }
+    this.contarProductos();
+
   }
 
   sumaTotalProductos() {
@@ -123,6 +125,7 @@ export class NavComponent {
 
     }
     this.sumaTotal = this.sumaTotal + suma;
+    this.contarProductos();
 
   }
 
@@ -131,6 +134,11 @@ export class NavComponent {
     //this.carritoService.eliminarProducto(index)
     this.productos.splice(index, 1);
     this.sumaTotalProductos();
-    
+    this.contarProductos();
   }
+  contarProductos(){
+   
+   this.cantProductos=this.carritoService.contarProductos();
+
+}
 }
