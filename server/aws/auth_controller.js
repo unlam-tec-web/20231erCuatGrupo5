@@ -24,6 +24,7 @@ async function verify(req, res) {
 }
 
 async function signIn(req, res) {
+  console.log("AUTH_CONTROLLER: ", "MAIL: ", req.body.email, " PASS: ",req.body.password)
   const response = await Cognito.signIn(req.body.email,req.body.password);
   return(response);
 }

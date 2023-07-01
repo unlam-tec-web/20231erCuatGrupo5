@@ -87,6 +87,7 @@ router.delete('/Delete/:id?', (req, res) => {
 /*******************Cognito************************/
 router.post("/login", async (req, res) => {
   const response = await cognito.signIn(req, res);
+  console.log(response);
   res.json(response);
 });
 

@@ -23,10 +23,9 @@ app.use('/cart', cartController);
 function InitServer() {
   app.listen(3000, () => {
     console.log('Servidor iniciado en el puerto 3000');
-    console.log('UserPoolId:', CREDENTIALS.AWS_COGNITO_USER_POOL_ID);
-    console.log('ClientId:', CREDENTIALS.AWS_COGNITO_CLIENT_ID);
-
-    console.log(u.getUserPool())
+    console.log("LLEGUE")
+    console.log(u.getAuthDetails('prueba@prueba.com', 'Tallerweb2#'))
+    console.log(u.setCognitoAttributeList('prueba2@prueba.com'))
   });
 }
 

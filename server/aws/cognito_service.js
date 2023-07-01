@@ -1,10 +1,10 @@
 const AwsConfig = require('./config');
 
-function signUp(email, password, agent = 'none') {
+function signUp(email, password) {
 
   return new Promise((resolve, reject) => {
     AwsConfig.initAWS ();
-    AwsConfig.setCognitoAttributeList(email,agent);
+    AwsConfig.setCognitoAttributeList(email,password);
     AwsConfig.getUserPool().signUp(email, password, AwsConfig.getCognitoAttributeList(), null, function(err, result){
       if (err) {
         return resolve({ statusCode: 422, response: err });
@@ -32,19 +32,19 @@ function verify(email, code) {
 }
 
 function signIn(email, password) {
-  console.log("COGNITO_SERVICE - ","USER: ",email , "PASS: ", password)
+  console.log("COGNITO_SERVICE - ", "USER: ", email, "PASS: ", password);
   return new Promise((resolve) => {
     AwsConfig.getCognitoUser(email).authenticateUser(AwsConfig.getAuthDetails(email, password), {
       onSuccess: (result) => {
-        const token = {
+        /*const token = {
           accessToken: result.getAccessToken().getJwtToken(),
           idToken: result.getIdToken().getJwtToken(),
           refreshToken: result.getRefreshToken().getToken(),
-        }
-        return resolve({ statusCode: 200, response: AwsConfig.decodeJWTToken(token) });
+        };*/
+        resolve({ statusCode: 200, response: 'estoy acá' });
       },
       onFailure: (err) => {
-        return resolve({ statusCode: 400, response: err.message || JSON.stringify(err)});
+        resolve({ statusCode: 400, response: err.message || JSON.stringify(err) });
       },
     });
   });
