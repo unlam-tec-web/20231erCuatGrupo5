@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {PedidoService} from '../../../service/product-service/pedido.service'
 import{carritoService}from 'src/service/servicio-carrito';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -16,6 +18,8 @@ import{carritoService}from 'src/service/servicio-carrito';
 export class PedidoComponent{
   sumaTotal: number=0;
   productos : any[];
+  listaProd : any[];
+  columnas: string[] = ['descripcion', 'cantidad', 'precio'];
   constructor(private _formBuilder: FormBuilder,private router: Router,private _pedidoService : PedidoService,private _carritoService : carritoService) {
   }
 
@@ -35,6 +39,7 @@ export class PedidoComponent{
   }
   pagar(){
     this._carritoService.pagar(this.sumaTotal);
+    
   }
 }
 

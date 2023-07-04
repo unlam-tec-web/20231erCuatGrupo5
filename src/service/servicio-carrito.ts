@@ -78,9 +78,8 @@ this.cargaDeCarrito();
    this.verStorage()
 
 }else{
-    this.cantproduct.next(this.cantTotalProductos());
-    this.productosDelCarrito.next(this.miCarrito);
-    this.valorTotal.next(this.getTotal());
+    this.cargaDeCarrito();
+
 }
 
 this.verificarExistencia(product.id)
@@ -159,9 +158,19 @@ pagar(_total){
         });
   
         setTimeout(() => {
-        this.router.navigate(['/home']); // Ruta del componente al que deseas redirigir
+        this.router.navigate(['/home']);
+       
+
+
+        this.miCarrito.splice(0,this.miCarrito.length);
+         localStorage.clear();
+        this.cargaDeCarrito();
+
+     
+        // Ruta del componente al que deseas redirigir
         }, 3000); // Retraso en milisegundos antes de la redirección
-      }),
+        
+    }),
       catchError(error => {
         // Aquí puedes manejar cualquier error que ocurra durante la solicitud
         throw error;
