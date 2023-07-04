@@ -6,4 +6,5 @@ export interface product {
   imagen:string;
   marca:string;
   nombre:string;
+  clasificacion:string;
 }
