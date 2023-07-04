@@ -47,3 +47,7 @@ button{
     color: #613c82;
     background-color: #613c82;
  }
+ ::ng-deep .mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell{
+    background-color: #fff;
+    color: #000;
+ }

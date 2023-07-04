@@ -1,5 +1,5 @@
 import {FormBuilder, Validators} from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {PedidoService} from '../../../service/product-service/pedido.service'
 import{carritoService}from 'src/service/servicio-carrito';

@@ -61,7 +61,6 @@ this.servCarrito.valorTotal$.subscribe(carritoValorTotal=>{
 
  
   }
-
   
   openDialog():void{
     const dialogRef = this.dialog.open(LoginComponent,{},);
@@ -81,7 +80,7 @@ this.servCarrito.valorTotal$.subscribe(carritoValorTotal=>{
   }
   comprar() {
     this._pedidoService.setData(this.sumaTotal);
-   this._pedidoService.setProductos(this.ProductosCarrito);
+    this._pedidoService.setProductos(this.carritoService.MostrarProducto());
     this.router.navigate(['/pedido']);
 
   }
