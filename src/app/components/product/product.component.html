@@ -11,13 +11,17 @@
       <mat-card-content>
         <p class="card-price">US${{item.precio}}</p>
       </mat-card-content>
-    
+     
+
+         
       <mat-card-actions class="mat-card-actions">
-        <button mat-fab extended color="primary" (click)="AgregarProducto(item,1)">
+        <button mat-fab extended color="primary" (click)="AgregarProducto(item)">
           <mat-icon>shopping_cart</mat-icon>
            <a>Agregar al carrito</a> 
         </button>
       </mat-card-actions>
     </mat-card>
+
   </div>
 </section>
+

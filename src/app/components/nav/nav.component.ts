@@ -21,6 +21,7 @@ export class NavComponent implements OnInit{
   productos ;
 cantProductos;
 cproduct;
+login:boolean;
 ProductosCarrito:carrito[]=[];
 miTemplate: TemplateRef<any>;
   closeResult: string;
@@ -46,6 +47,7 @@ this.servCarrito.productosDelCarrito$.subscribe(carritoservie=>{
 this.servCarrito.valorTotal$.subscribe(carritoValorTotal=>{
   this.sumaTotal=carritoValorTotal;
 });
+this.verificarLOgin();
 
   }
 
@@ -56,35 +58,45 @@ this.servCarrito.valorTotal$.subscribe(carritoValorTotal=>{
   openEnd(miTemplate) {
    
     this.offcanvasService.open(miTemplate, { position: 'end',animation:true });
-    this.verProductos();
-   
+  
 
   }
   
   openDialog():void{
+ 
+if(!this.login){     
     const dialogRef = this.dialog.open(LoginComponent,{},);
     dialogRef.afterClosed().subscribe(res => {
-
+this.verificarLOgin()
    
-    });
+    });}
+    else{
+      sessionStorage.removeItem("login");
+      this.verificarLOgin()
+
+    }
+
   }
 
 
-  verProductos() {
-
-  }
   sumarCantidadProducto(index: number) {
 
   this.servCarrito.sumarCantidad(index);
   }
   comprar() {
-    this._pedidoService.setData(this.sumaTotal);
-    this.router.navigate(['/pedido']);
+if (this.verificarLOgin()){
+  this._pedidoService.setData(this.sumaTotal);
+  this.router.navigate(['/pedido']);
+
+}else{
+  this.openDialog()
+ 
+}
+
+   
 
   }
-  verificarLoginDeUsuario(){
-    
-  }
+
 
   restarCantidadProducto(index: number) {
    
@@ -97,5 +109,14 @@ this.servCarrito.valorTotal$.subscribe(carritoValorTotal=>{
     
     this.servCarrito.eliminarProducto(index)
  
+  }
+  verificarLOgin(){
+    
+    if (sessionStorage.getItem("login")==null){
+     this.login=false;
+    }else{
+      this.login=true;
+    }
+    return this.login
   }
 }

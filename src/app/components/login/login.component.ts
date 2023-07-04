@@ -33,15 +33,18 @@ export class LoginComponent implements OnInit {
   }
 
   Login(){
+    var res
     this.IsValidLogin = true;
     this.User = this.LoginForm.get('UserLogin').value;
     this.LoginPassword = this.LoginForm.get('LoginPassword').value;
-    var res = {
+     res = {
       'User': this.User,
       'Password': this.LoginPassword
     };
-    console.log(res)
-  }
+
+    sessionStorage.setItem("login", JSON.stringify(res));    
+this.CloseDialog()
+     }
 
   IrARegistro(){
     this.CloseDialog();

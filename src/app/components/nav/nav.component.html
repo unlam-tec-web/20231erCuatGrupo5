@@ -7,10 +7,13 @@
 
 
   <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
+  
+    <li class="nav-item" >
       <a class="nav-item-a" (click)="openDialog()">
         <mat-icon class="mat-icon">person</mat-icon>
-        <span class="nav-item-span">Ingresar</span>
+        <span class="nav-item-span" *ngIf="!login">  Ingresar</span>
+        <span class="nav-item-span"*ngIf="login">Cerrar Sesion</span>
+
       </a> 
     </li>
 
