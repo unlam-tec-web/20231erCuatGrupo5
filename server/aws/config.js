@@ -4,6 +4,7 @@ const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 const CREDENTIALS = require('../CREDENTIALS')
 let cognitoAttributeList = [];
 
+
 const poolData = {
   UserPoolId : CREDENTIALS.AWS_COGNITO_USER_POOL_ID,
   ClientId : CREDENTIALS.AWS_COGNITO_CLIENT_ID

@@ -2,7 +2,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {PedidoService} from '../../../service/product-service/pedido.service'
-import {CarritoService} from '../../../service/carrito.service'
+import{carritoService}from 'src/service/servicio-carrito';
 
 
 
@@ -16,7 +16,7 @@ import {CarritoService} from '../../../service/carrito.service'
 export class PedidoComponent{
   sumaTotal: number=0;
   productos : any[];
-  constructor(private _formBuilder: FormBuilder,private router: Router,private _pedidoService : PedidoService,private _carritoService : CarritoService) {
+  constructor(private _formBuilder: FormBuilder,private router: Router,private _pedidoService : PedidoService,private _carritoService : carritoService) {
   }
 
   firstFormGroup = this._formBuilder.group({

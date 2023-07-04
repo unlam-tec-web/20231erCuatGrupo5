@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CarritoService } from 'src/service/carrito.service';
+import{carritoService}from 'src/service/servicio-carrito';
 
 import { ProductService } from 'src/service/product-service/product.service';
 import { product } from 'src/app/model/product';
@@ -19,7 +19,7 @@ export class DetailProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private carritoService:CarritoService
+    private carritoService:carritoService
   ) { }
 
   ngOnInit(): void {
@@ -34,33 +34,22 @@ export class DetailProductComponent implements OnInit {
     .subscribe((data:product[])=>{
       this.producto = data;
     });
-   
-    this.existeProducto=this.carritoService.existeProduto(id)
-
+    this.existeProducto=this.carritoService.verificarExistencia(id)
     return this.producto;
   }
   AgregarProducto(producto:any) {
-    let product = {
-      cantidad: 1,
-      id:producto.id,
-      productos: producto
+  
 
-    }
-    this.existeProducto=this.carritoService.existeProduto(product.id)
-
-     this.carritoService.agregarProducto(product)
-     console.log(this.existeProducto)
-     this.existeProducto=this.carritoService.existeProduto(producto.id)
+     this.carritoService.addProducto(producto,1)
+     this.existeProducto=this.carritoService.verificarExistencia(producto.id)
 
 
   }
   eliminarProducto(producto:any){
-    this.existeProducto=this.carritoService.existeProduto(producto.id)
+this.carritoService.eliminarDeDetalle(producto.id)
 
-    this.carritoService.eliminarProducto(producto.id)
-    this.existeProducto=this.carritoService.existeProduto(producto.id)
+this.existeProducto=this.carritoService.verificarExistencia(producto.id)
 
- 
 
 
 

@@ -15,9 +15,8 @@
     </li>
 
     <li class="nav-item">
-      <a (click)="openEnd(content)">
-        <!--<mat-icon class="mat-icon">shopping_cart</mat-icon>-->
-        <mat-icon [matBadge]="cantProductos" class="mat-icon" >shopping_cart</mat-icon>
+      <a (click)="openEnd(miTemplate)">
+        <mat-icon [matBadge]="cproduct" class="mat-icon" >shopping_cart</mat-icon>
 
       </a> 
     </li>
@@ -26,8 +25,7 @@
 
 
 <!--------------------------Panel de Carrito-------------------------->
-
-<ng-template #content let-offcanvas>
+<ng-template #miTemplate let-offcanvas>
   <!--div class="offcanvas-header">
 		<h4 class="offcanvas-title">Offcanvas title</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
@@ -35,16 +33,16 @@
   <mat-toolbar class="mat-toolbar-header">
     <mat-icon>shopping_cart</mat-icon> 
     <span>Mi Carrito</span>
-    <a (click)="cerrar()" (click)="offcanvas.close()" class="close-icon" aria-label="close-icon">
+    <a  (click)="offcanvas.close()" class="close-icon" aria-label="close-icon">
       <mat-icon>close</mat-icon>
   </a>
   </mat-toolbar>
 
 
-  <div *ngIf="sumaTotal!=0; then thenBlock else elseBlock"></div>
+  <div *ngIf="sumaTotal>0; then thenBlock else elseBlock"></div>
   <ng-template #thenBlock> <div class="container">
 
-    <div class="container-product" *ngFor="let producto of productos; let i=index">
+    <div class="container-product" *ngFor="let producto of ProductosCarrito; let i=index">
       <div class="container-img-remove">
         <div>
           <button (click)="eliminarProducto(i)" mat-icon-button class="mat-icon-button" aria-label="Eliminar producto">

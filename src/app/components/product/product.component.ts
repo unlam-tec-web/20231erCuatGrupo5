@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { product } from 'src/app/model/product';
-import { CarritoService } from 'src/service/carrito.service';
 import { ProductService } from 'src/service/product-service/product.service';
-
+import{carritoService}from 'src/service/servicio-carrito';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -15,12 +14,11 @@ export class ProductComponent implements OnInit {
   @Input() productos: product[]=[];
   sus : any;
 
-  constructor(private carritoService:CarritoService,private productService: ProductService) {
+  constructor(private productService: ProductService,private servCarrito:carritoService) {
   }
 
   ngOnInit(): void {
     this.getProductos();
-    this.contarProductos();
   }
 
   getProductos(): product[] {
@@ -31,19 +29,11 @@ export class ProductComponent implements OnInit {
     return this.productos;
   }
 
-  AgregarProducto(producto) {
-    let product = {
-      cantidad: 1,
-      id:producto.id,
-      productos: producto
-    }
-    this.carritoService.agregarProducto(product)
-    this.contarProductos();
+  AgregarProducto(producto:product,cant:number) {
+ 
+    this.servCarrito.addProducto(producto,cant)
+
 
    
   }
-  contarProductos(){
-    return this.carritoService.contarProductos()
- 
-}
 }
