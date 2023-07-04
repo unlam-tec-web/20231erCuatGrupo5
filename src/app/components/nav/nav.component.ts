@@ -59,7 +59,6 @@ this.servCarrito.valorTotal$.subscribe(carritoValorTotal=>{
     this.verProductos();
    
 
- 
   }
   
   openDialog():void{
