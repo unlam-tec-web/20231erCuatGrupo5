@@ -19,11 +19,12 @@ import {carrito}from '../../../models/carrito'
 export class NavComponent implements OnInit{
 
   productos ;
-cantProductos;
-cproduct;
-login:boolean;
-ProductosCarrito:carrito[]=[];
-miTemplate: TemplateRef<any>;
+  cantProductos;
+  cproduct;
+  login:boolean;
+  hidePanel: boolean;
+  ProductosCarrito:carrito[]=[];
+  miTemplate: TemplateRef<any>;
   closeResult: string;
 
   sumaTotal = 0;
@@ -32,10 +33,7 @@ miTemplate: TemplateRef<any>;
     alertConfig.type = 'success';
     alertConfig.dismissible = false;
     this.productos = null;
-  
-
-
-
+    this.hidePanel = false;
   }
   ngOnInit(): void {
     this.servCarrito.cantproduct$.subscribe(carritoService=>{
@@ -72,8 +70,8 @@ this.verificarLOgin()
     });}
     else{
       sessionStorage.removeItem("login");
-      this.verificarLOgin()
-
+      sessionStorage.removeItem("loginAdmin");
+      this.verificarLOgin();
     }
 
   }
@@ -110,13 +108,28 @@ if (this.verificarLOgin()){
     this.servCarrito.eliminarProducto(index)
  
   }
+
   verificarLOgin(){
-    
-    if (sessionStorage.getItem("login")==null){
-     this.login=false;
-    }else{
-      this.login=true;
+    let usuario = sessionStorage.getItem("login");
+    let admin = sessionStorage.getItem("loginAdmin");
+
+    if(usuario){
+      return this.verificarUsuario(usuario);
+    }else {
+      return this.verificarUsuario(admin)?this.hidePanel=true:this.hidePanel=false;
     }
-    return this.login
+  }
+
+  private verificarUsuario(user: string): boolean{
+    if (user==null){
+      this.login=false;
+     }else{
+       this.login=true; 
+     }
+     return this.login;
+  }
+
+  IrACargaDeProducto(){
+      this.router.navigate(['/home']);
   }
 }

@@ -7,20 +7,25 @@
 
 
   <ul class="navbar-nav ml-auto">
+
+    <li class="nav-item">
+      <a class="nav-item-a" *ngIf="hidePanel" (click)="IrACargaDeProducto()"> 
+        <mat-icon class="mat-icon">publish icon</mat-icon>
+        <span class="nav-item-span">Cargar producto</span>
+      </a>
+    </li>
   
-    <li class="nav-item" >
+    <li class="nav-item">
       <a class="nav-item-a" (click)="openDialog()">
         <mat-icon class="mat-icon">person</mat-icon>
-        <span class="nav-item-span" *ngIf="!login">  Ingresar</span>
-        <span class="nav-item-span"*ngIf="login">Cerrar Sesion</span>
-
+        <span class="nav-item-span" *ngIf="!login">Ingresar</span>
+        <span class="nav-item-span"*ngIf="login">Cerrar Sesión</span>
       </a> 
     </li>
 
     <li class="nav-item">
-      <a (click)="openEnd(miTemplate)">
-        <mat-icon [matBadge]="cproduct" class="mat-icon" >shopping_cart</mat-icon>
-
+      <a (click)="openEnd(miTemplate)" *ngIf="!hidePanel">
+        <mat-icon [matBadge]="cproduct" class="mat-icon">shopping_cart</mat-icon>
       </a> 
     </li>
   </ul>
@@ -29,10 +34,7 @@
 
 <!--------------------------Panel de Carrito-------------------------->
 <ng-template #miTemplate let-offcanvas>
-  <!--div class="offcanvas-header">
-		<h4 class="offcanvas-title">Offcanvas title</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
-	</div-->
+
   <mat-toolbar class="mat-toolbar-header">
     <mat-icon>shopping_cart</mat-icon> 
     <span>Mi Carrito</span>
