@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import { NavComponent } from '../nav/nav.component';
 import {LoginComponent} from "../login/login.component";
+import { Router } from '@angular/router';
+import { text } from 'express';
+
+
 
 @Component({
   selector: 'app-header',
@@ -21,6 +25,10 @@ export class HeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(res => {
       console.log(res);
     });
+  }
+
+  openEnd() {
+   // this.navComponet.openEnd(miTemplate)
   }
 
 }

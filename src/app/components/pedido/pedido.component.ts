@@ -2,10 +2,9 @@ import {FormBuilder, Validators} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {PedidoService} from '../../../service/product-service/pedido.service'
-import {CarritoService} from '../../../service/carrito.service'
+import{carritoService}from 'src/service/servicio-carrito';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -19,10 +18,10 @@ import { MatSortModule } from '@angular/material/sort';
 export class PedidoComponent implements OnInit{
   existProducts:boolean=false
   sumaTotal: number=0;
+  productos : any[];
   listaProd : any[];
   columnas: string[] = ['descripcion', 'cantidad', 'precio'];
-
-  constructor(private _formBuilder: FormBuilder,private router: Router,private _pedidoService : PedidoService,private _carritoService : CarritoService) {
+  constructor(private _formBuilder: FormBuilder,private router: Router,private _pedidoService : PedidoService,private _carritoService : carritoService) {
   }
 
   firstFormGroup = this._formBuilder.group({
@@ -46,6 +45,7 @@ export class PedidoComponent implements OnInit{
   }
   pagar(){
     this._carritoService.pagar(this.sumaTotal);
+    
   }
   ContainProducts(){
     this.listaProd = JSON.parse(localStorage.getItem("carrito"));

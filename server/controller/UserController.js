@@ -1,8 +1,8 @@
 const express = require("express");
 const service = require('../service/user_service')
+const cognito = require("../aws/auth_controller");
 const router = express.Router();
 
-module.exports = router;
 
 router.get('/GetUsersList', (req, res) => {
   const products = service.GetUsers();
@@ -82,5 +82,39 @@ router.delete('/Delete/:id?', (req, res) => {
     status_code: 200
   });
 });
+
+
+/*******************Cognito************************/
+router.post("/login", async (req, res) => {
+  const response = await cognito.signIn(req, res);
+  console.log(response);
+  res.json(response);
+});
+
+router.post("/registrarse", async (req, res) => {
+  const response = await cognito.signUp(req, res);
+  res.send(response);
+});
+
+router.post("/activar", async (req, res) => {
+  const response = await cognito.verify(req, res);
+  res.send(response);
+});
+
+router.post("/cerrarsesion", async (req, res) => {
+  const response = await cognito.signOut(req, res);
+  res.send(response);
+});
+
+router.post("/recuperarpassword", async (req, res) => {
+  const response = await cognito.forgotPassword(req, res);
+  res.send(response);
+});
+
+router.post("/confirmarpassword", async (req, res) => {
+  const response = await cognito.confirmPassword(req, res);
+  res.send(response);
+});
+
 
 module.exports = router;

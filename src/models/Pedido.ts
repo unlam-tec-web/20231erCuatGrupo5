@@ -1,7 +1,7 @@
-import { Producto } from "./Producto";
+import { product } from "./Producto";
 
 export interface Pedido{
     id: number;
-    productos : Producto[];
+    productos : product;
     total: number;
 }
