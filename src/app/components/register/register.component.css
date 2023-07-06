@@ -42,3 +42,14 @@ mat-label{
   background-color: transparent;
   color: #000;
 }
+.form-code{
+  margin-top: 2rem;
+}
+::ng-deep .mat-mdc-snack-bar-container{
+  --mdc-snackbar-container-color: #317f43 ;
+  --mdc-snackbar-supporting-text-color: #fff;
+}
+::ng-deep .cdk-overlay-pane{
+  display: initial;
+  margin-top: 20% !important;
+}

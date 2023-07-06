@@ -1,4 +1,4 @@
-<section class="vh-100">
+<section class="vh-100" *ngIf="!mostrarFormularioCodigo">
   <div class="container-fluid">
     <div class="row d-flex justify-content-evenly align-items-center h-100">
 
@@ -6,12 +6,12 @@
         <div class="card shadow-2-strong shadow">
           <div class="card-body p-5">
             <p class="display-4 text-center mb-5">Registrarse</p>
-            <form [formGroup]="formRegistro"> 
+            <form [formGroup]="formRegistro" (ngSubmit)="registrarUsuario()"> 
               <div class="form-campos">
                 <mat-form-field>
                   <mat-label>Nombre</mat-label>
-                  <input matInput type="text" formControlName="nombre" class="form-control " name="nombre"/>
-                  <mat-error *ngIf="formRegistro.get('nombre').hasError('required')">El nombre es obligatorio</mat-error>
+                  <input matInput type="text" formControlName="name" class="form-control " name="name"/>
+                  <mat-error *ngIf="formRegistro.get('name').hasError('required')">El nombre es obligatorio</mat-error>
                 </mat-form-field>
               </div>
 
@@ -43,10 +43,10 @@
               <div class="form-campos">
                 <mat-form-field>
                   <mat-label>Contraseña</mat-label>
-                  <input matInput type="password" formControlName="contrasenia" id="typePasswordX-2" class="form-control " name="contrasenia"/>
-                  <mat-error *ngIf="formRegistro.get('contrasenia').hasError('required')">La contraseña es obligatoria</mat-error>
-                  <mat-error *ngIf="formRegistro.get('contrasenia').hasError('minlength')">La contraseña debe tener 8 (ocho) caracteres como mínimo</mat-error>
-                  <mat-error *ngIf="formRegistro.get('contrasenia').hasError('pattern')">La contraseña debe tener al menos: 
+                  <input matInput type="password" formControlName="password" id="typePasswordX-2" class="form-control " name="password"/>
+                  <mat-error *ngIf="formRegistro.get('password').hasError('required')">La contraseña es obligatoria</mat-error>
+                  <mat-error *ngIf="formRegistro.get('password').hasError('minlength')">La contraseña debe tener 8 (ocho) caracteres como mínimo</mat-error>
+                  <mat-error *ngIf="formRegistro.get('password').hasError('pattern')">La contraseña debe tener al menos: 
                     <div><ul>
                       <li>Una mayúscula</li>
                       <li>Una minúscula</li>
@@ -69,4 +69,21 @@
     </div>
   </div>
 </section>
+<div *ngIf="mostrarFormularioCodigo" class="form-code">
+  <p class="display-5 text-center mb-5">Ingrese el código de validación</p>
+  <form [formGroup]="formCode">
+    <div class="form-campos">
+      <mat-form-field>
+        <mat-label>Código de validación</mat-label>
+        <input matInput type="text" formControlName="code" class="form-control" name="code" maxlength="6"/>
+        <mat-error *ngIf="formCode.get('code').hasError('required')">Ingrese el código de validación</mat-error>
+        <mat-error *ngIf="formCode.get('code').hasError('pattern')">Cumpla con el formato de 6 digitos (solo números)</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="mb-2 mt-4 d-flex justify-content-center align-items-end">
+      <button mat-raised-button color="primary" (click)="validarCodigo()">Validar</button>
+    </div>
+  </form>
+</div>
+
 
