@@ -5,12 +5,14 @@ const app = express();
 app.use(cors());
 // Dependencias y configuraciones adicionales
 
+const UserController =require ('./aws/userController');
 const productController = require('./controller/ProductController');
 const userController = require('./controller/UserController');
 const cartController = require('./controller/CartController');
 
 app.use(bodyParser.json());
 
+app.use('/user',UserController);
 app.use('/product', productController);
 app.use('/users', userController);
 app.use('/cart', cartController);

@@ -37,3 +37,23 @@
     color: #613c82;
     cursor: pointer;
   }
+  .error-message {
+    color: red;
+    margin-top: 5px;
+  }
+  
+  .form-control.is-invalid {
+    border-color: red;
+  }
+  
+  .form-control.is-valid {
+    border-color: green;
+  }
+  .snack-bar-loading {
+    background-color: #333;
+    color: #fff;
+  }
+  ::ng-deep .mat-mdc-snack-bar-container{
+    --mdc-snackbar-container-color: #dfe7e1 ;
+    --mdc-snackbar-supporting-text-color: #000;
+  }

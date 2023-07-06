@@ -4,8 +4,8 @@ const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 let cognitoAttributeList = [];
 
 const poolData = {
-  UserPoolId : process.env.AWS_COGNITO_USER_POOL_ID,
-  ClientId : process.env.AWS_COGNITO_CLIENT_ID
+  UserPoolId : process.env.AWS_COGNITO_USER_POOL_ID2,
+  ClientId : process.env.AWS_COGNITO_CLIENT_ID2
 };
 
 const attributes = (key, value) => {

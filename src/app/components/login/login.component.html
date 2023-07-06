@@ -13,24 +13,38 @@
       <div class="form-campos">
         <label>Correo electrónico</label>
         <input type="email" id="UserLogin" formControlName="UserLogin" class="form-control"
-               [class.is-invalid]="IsValidLogin&&LoginForm.controls['UserLogin'].invalid"
-               [class.is-valid]="IsValidLogin&&LoginForm.controls['UserLogin'].valid">
+               [class.is-invalid]="LoginForm.get('UserLogin').invalid && (LoginForm.get('UserLogin').dirty || LoginForm.get('UserLogin').touched)"
+               [class.is-valid]="LoginForm.get('UserLogin').valid && (LoginForm.get('UserLogin').dirty || LoginForm.get('UserLogin').touched)">
+        <div *ngIf="LoginForm.get('UserLogin').invalid && (LoginForm.get('UserLogin').dirty || LoginForm.get('UserLogin').touched)"
+             class="invalid-feedback">
+          <div *ngIf="LoginForm.get('UserLogin').hasError('required')">El correo electrónico es requerido</div>
+          <div *ngIf="LoginForm.get('UserLogin').hasError('email')">Por favor, ingresa un correo electrónico válido</div>
+        </div>
       </div>
       <div class="form-campos">
         <label>Contraseña</label>
         <input type="password" class="form-control" id="LoginPassword" formControlName="LoginPassword"
-               [class.is-invalid]="IsValidLogin && LoginForm.controls['LoginPassword'].invalid"
-               [class.is-valid]="IsValidLogin && LoginForm.controls['LoginPassword'].valid">
+               [class.is-invalid]="LoginForm.get('LoginPassword').invalid && (LoginForm.get('LoginPassword').dirty || LoginForm.get('LoginPassword').touched)"
+               [class.is-valid]="LoginForm.get('LoginPassword').valid && (LoginForm.get('LoginPassword').dirty || LoginForm.get('LoginPassword').touched)">
+        <div *ngIf="LoginForm.get('LoginPassword').invalid && (LoginForm.get('LoginPassword').dirty || LoginForm.get('LoginPassword').touched)"
+             class="invalid-feedback">
+          <div *ngIf="LoginForm.get('LoginPassword').hasError('required')">La contraseña es requerida</div>
+        </div>
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
       </div>
       <div class="mb-3 d-flex justify-content-center">
-        <button (click)="Login()" mat-raised-button color="primary" class="btn-login">Ingresar</button>
+        <button (click)="login()" mat-raised-button color="primary" class="btn-login">Ingresar</button>
       </div>
-
+    
       <div class="d-flex justify-content-center mb-3" id="a-registro">
         <label class="pb-3">¿Aún no tenés cuenta? </label>
         <a class="ms-2" (click)="IrARegistro()"> Registrate</a>
       </div>
     </form>
+    
+    
 </section>
 
 
