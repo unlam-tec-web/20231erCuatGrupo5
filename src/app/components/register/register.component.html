@@ -79,7 +79,7 @@
         <input matInput type="text" formControlName="code" class="form-control" name="code" maxlength="6"/>
         <mat-error *ngIf="formCode.get('code').hasError('required')">Ingrese el código de validación</mat-error>
         <mat-error *ngIf="formCode.get('code').hasError('pattern')">Cumpla con el formato de 6 digitos (solo números)</mat-error>
-        <mat-hint><span *ngIf="errorMessage" class="error-message">{{errorMessage}}</span></mat-hint>
+        <mat-hint><span *ngIf="errorMessage" class="error-message">El código de validación es incorrecto</span></mat-hint>
       </mat-form-field>
     </div>
     <div class="mb-2 mt-4 d-flex justify-content-center align-items-end">
