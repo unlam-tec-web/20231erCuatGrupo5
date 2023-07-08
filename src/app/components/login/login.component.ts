@@ -127,6 +127,7 @@ export class LoginComponent implements OnInit {
             this.mostrarLoading = false;
             this.router.navigate(['/home']);
             this.dialog.closeAll();
+            sessionStorage.setItem("login", JSON.stringify(userData.Username));
           });
         },
         error => {
