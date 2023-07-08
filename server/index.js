@@ -3,9 +3,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const CREDENTIALS = require('./CREDENTIALS');
-const u = require('./aws/config2')
+const u = require('./aws/config')
+const cookieParser = require('cookie-parser');
 
-app.use(cors());
+app.use(cors({origin:'http://localhost:4200', credentials:true}));
+app.use(cookieParser());
 // Dependencias y configuraciones adicionales
 
 const UserController =require ('./aws/userController');

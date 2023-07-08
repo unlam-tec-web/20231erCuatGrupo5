@@ -1,0 +1,23 @@
+<div class="form-code">
+    <p class="display-5 text-center mb-5">Complete sus datos</p>
+    <form [formGroup]="formCode">
+      <div class="form-campos">
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="text" formControlName="email" class="form-control" name="email" />
+            <mat-error *ngIf="formCode.get('email').hasError('required')">El email es obligatorio</mat-error>
+            <mat-error *ngIf="formCode.get('email').hasError('pattern')">Ingrese un email válido</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Código de validación</mat-label>
+          <input matInput type="text" formControlName="code" class="form-control" name="code" maxlength="6"/>
+          <mat-error *ngIf="formCode.get('code').hasError('required')">Ingrese el código de validación</mat-error>
+          <mat-error *ngIf="formCode.get('code').hasError('pattern')">Cumpla con el formato de 6 digitos (solo números)</mat-error>
+          <mat-hint><span *ngIf="errorMessage" class="error-message">{{errorMessage}}</span></mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="mb-2 mt-4 d-flex justify-content-center align-items-end">
+        <button mat-raised-button color="primary" (click)="validarCodigo()">Validar</button>
+      </div>
+    </form>
+  </div>

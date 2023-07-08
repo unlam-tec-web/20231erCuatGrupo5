@@ -44,16 +44,17 @@
                 <mat-form-field>
                   <mat-label>Contraseña</mat-label>
                   <input matInput type="password" formControlName="password" id="typePasswordX-2" class="form-control " name="password"/>
+                  <mat-hint><span *ngIf="errorMessage" class="error-message">{{errorMessage}}</span></mat-hint>
                   <mat-error *ngIf="formRegistro.get('password').hasError('required')">La contraseña es obligatoria</mat-error>
                   <mat-error *ngIf="formRegistro.get('password').hasError('minlength')">La contraseña debe tener 8 (ocho) caracteres como mínimo</mat-error>
                   <mat-error *ngIf="formRegistro.get('password').hasError('pattern')">La contraseña debe tener al menos: 
-                    <div><ul>
+                    <ul>
                       <li>Una mayúscula</li>
                       <li>Una minúscula</li>
                       <li>Un número</li>
                       <li>Un carácter especial .-@</li>
                       <li>No debe poseer espacios</li>
-                    </ul></div>
+                    </ul>
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -78,6 +79,7 @@
         <input matInput type="text" formControlName="code" class="form-control" name="code" maxlength="6"/>
         <mat-error *ngIf="formCode.get('code').hasError('required')">Ingrese el código de validación</mat-error>
         <mat-error *ngIf="formCode.get('code').hasError('pattern')">Cumpla con el formato de 6 digitos (solo números)</mat-error>
+        <mat-hint><span *ngIf="errorMessage" class="error-message">El código de validación es incorrecto</span></mat-hint>
       </mat-form-field>
     </div>
     <div class="mb-2 mt-4 d-flex justify-content-center align-items-end">

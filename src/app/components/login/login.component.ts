@@ -4,6 +4,7 @@ import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog
 import { Router } from '@angular/router';
 import { UserService } from 'src/service/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CookieService } from 'ngx-cookie-service';
 
 let usuarios = [
   {
@@ -42,7 +43,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private userService : UserService,
     private snackBar : MatSnackBar,
-    private dialog : MatDialog) { 
+    private dialog : MatDialog,
+    private cookieService: CookieService) { 
       this.IsValidLogin = false; 
     }
 
@@ -96,6 +98,12 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/registro']);
     }, 200);
   }
+  IrAVerificarCuenta(){
+    this.CloseDialog();
+    setTimeout(() => {
+      this.router.navigate(['/accountVerification']);
+    }, 200);
+  }
 
   CloseDialog() {
     this.dialogRef.close();
@@ -124,9 +132,10 @@ export class LoginComponent implements OnInit {
         },
         error => {
           // Manejar el error del servicio y mostrar el mensaje correspondiente
-          this.errorMessage = "La combinacion de usuario y contraseña no es correcta";
+          this.errorMessage = error.error.message;
         }
       );
     }
+    
   }
 }

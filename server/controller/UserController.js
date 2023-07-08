@@ -1,6 +1,5 @@
 const express = require("express");
 const service = require('../service/user_service')
-const cognito = require("../aws/auth_controller");
 const router = express.Router();
 
 

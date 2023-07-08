@@ -49,7 +49,7 @@ mat-label{
   --mdc-snackbar-container-color: #317f43 ;
   --mdc-snackbar-supporting-text-color: #fff;
 }
-::ng-deep .cdk-overlay-pane{
-  display: initial;
-  margin-top: 20% !important;
+.error-message {
+  color: red;
+  margin-top: 5px;
 }
