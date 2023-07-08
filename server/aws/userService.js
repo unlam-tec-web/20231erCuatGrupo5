@@ -93,10 +93,14 @@ function exceptionErros(excep){
     case excep='ExpiredCodeException':
       return "El email no existe o la clave está expirada "
     break;  
-    default:
-      excep="ExpiredCodeException";
+    
+     case  excep="ExpiredCodeException":
       return "La combinación de email y/o código de verificación es incorrecta"
       break;
+
+      default:
+        return "Ha ocurrido un error al ejecutar la operación";
+        break;
   }
 } 
 

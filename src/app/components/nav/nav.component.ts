@@ -130,6 +130,6 @@ if (this.verificarLOgin()){
   }
 
   IrACargaDeProducto(){
-      this.router.navigate(['/home']);
+      this.router.navigate(['/load']);
   }
 }

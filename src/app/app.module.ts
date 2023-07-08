@@ -38,6 +38,7 @@ import { PedidoComponent } from './components/pedido/pedido.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
 import { PagoComponent } from './components/pago/pago.component';
 import { AccountVerificationComponent } from './components/account-verification/account-verification.component';
+import { CargaProductoComponent } from './components/carga-producto/carga-producto.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AccountVerificationComponent } from './components/account-verification/
     PedidoComponent,
     DetailProductComponent,
     PagoComponent,
-    AccountVerificationComponent
+    AccountVerificationComponent,
+    CargaProductoComponent
   ],
   imports: [   
   FormsModule,

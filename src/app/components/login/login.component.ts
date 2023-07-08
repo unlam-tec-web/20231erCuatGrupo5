@@ -10,8 +10,8 @@ let usuarios = [
   {
     "id": 1,
     "nombre": "Agustín",
-    "mail": "usuario1@example.com",
-    "password": "contraseña1",
+    "mail": "gomezangeles.lab@gmail.com",
+    "password": "Pru3b!12",
     "rol": "admin"
   },
   {
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
      private validarUsuarioAdministrador(res): boolean{
       let esAdmin:boolean = false;
       for(let i=0;i<usuarios.length;i++){
-        if(usuarios[i].mail===res.User && usuarios[i].password===res.Password){ //usuarios[i].mail===res.User && usuarios[i].password===res.Password
+        if(usuarios[i].mail===res.Username && usuarios[i].password===res.Password){ 
           esAdmin=true;
         }
       }
@@ -127,7 +127,10 @@ export class LoginComponent implements OnInit {
             this.mostrarLoading = false;
             this.router.navigate(['/home']);
             this.dialog.closeAll();
-            sessionStorage.setItem("login", JSON.stringify(userData.Username));
+
+            let esAdmin = this.validarUsuarioAdministrador(userData);
+            this.validarRol(esAdmin,userData.Username);
+           /* sessionStorage.setItem("login", JSON.stringify(userData.Username));*/
           });
         },
         error => {

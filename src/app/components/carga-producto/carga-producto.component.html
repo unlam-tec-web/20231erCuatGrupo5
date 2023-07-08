@@ -1,0 +1,58 @@
+<p class="display-4 text-center mb-2 mt-5">Cargar nuevo producto</p>
+<p class="text-center mb-5">Por favor ingrese los datos solicitados.</p>
+<div class="contenedor-carga">
+    <form [formGroup]="LoadForm" (ngSubmit)="LoadProducto()"> 
+        <div class="form">
+        <div class="form-campos">
+          <label>Número</label>
+          <input type="text" class="form-control" id="nroProd" formControlName="nroProd" name="nroProd">
+          <div *ngIf="LoadForm.get('nroProd').hasError('required')">Ingrese el número del producto</div>
+        </div>
+        <div class="form-campos">
+          <label>Nombre</label>
+          <input type="text" class="form-control" id="nombreProd" formControlName="nombreProd" name="nombreProd">
+          <div *ngIf="LoadForm.get('nombreProd').hasError('required')">Ingrese el nombre del producto</div>
+        </div>
+
+        <div class="form-campos">
+            <label>Stock</label>
+            <input type="text" class="form-control" id="stockProd" formControlName="stockProd" name="stockProd">
+            <div *ngIf="LoadForm.get('stockProd').hasError('required')">Ingrese el stock disponible</div>
+          </div>
+
+          <div class="form-campos">
+            <label>Imagen</label>
+            <input type="text" class="form-control" id="imgProd" formControlName="imgProd" name="imgProd">
+            <div *ngIf="LoadForm.get('imgProd').hasError('required')">Ingrese la imagen del producto</div>
+          </div>
+
+          <div class="form-campos">
+            <label>Precio</label>
+            <input type="text" class="form-control" id="precioProd" formControlName="precioProd" name="precioProd">
+            <div *ngIf="LoadForm.get('precioProd').hasError('required')">Ingrese el precio del producto</div>
+          </div>
+
+          <div class="form-campos">
+            <label>Marca</label>
+            <input type="text" class="form-control" id="marcaProd" formControlName="marcaProd" name="marcaProd">
+            <div *ngIf="LoadForm.get('marcaProd').hasError('required')">Ingrese la marca del producto</div>
+          </div>
+
+          <div class="form-campos">
+            <label>Clasificación</label>
+            <input type="text" class="form-control" id="clasProd" formControlName="clasProd" name="clasProd">
+            <div *ngIf="LoadForm.get('clasProd').hasError('required')">Ingrese la clasificación del producto</div>
+          </div>
+
+          <div class="form-campos">
+            <label>Descripción</label>
+            <input type="text" class="form-control" id="desProd" formControlName="desProd" name="desProd">
+            <div *ngIf="LoadForm.get('desProd').hasError('required')">Ingrese la clasificación del producto</div>
+          </div>
+    </div>
+        <div class="mb-3 btn-cont">
+          <button mat-raised-button color="primary" class="btn-login">Cargar producto</button> <!--(click)="login()"-->
+        </div>
+        
+      </form>
+</div>

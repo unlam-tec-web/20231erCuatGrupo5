@@ -1,0 +1,64 @@
+.contenedor-carga{
+    width: 80%;
+    margin: auto;
+    /*background-color: coral;*/
+}
+.form{
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    margin: auto;
+    flex-wrap: wrap;
+}
+.form-campos{
+    margin-left: 2em;
+    margin-bottom: 0.5em;
+    width: 40%;
+    padding-left: 3em;
+}
+.form-campos label{
+    font-size: 16px;
+    padding-bottom: 0.5em;
+    padding-top: 1em;
+}
+input{
+    width: 80%;
+   
+}
+  .btn-login{
+    margin-top: 2em;
+    margin-bottom: 1em;
+    padding: 1.5em;
+    font-size: 16px;
+    
+  }
+  .btn-cont{
+    text-align: center;
+  }
+  #a-registro{
+    font-size: 16px;
+  }
+  #a-registro a{
+    color: #613c82;
+    cursor: pointer;
+  }
+  .error-message {
+    color: red;
+    margin-top: 5px;
+  }
+  
+  .form-control.is-invalid {
+    border-color: red;
+  }
+  
+  .form-control.is-valid {
+    border-color: green;
+  }
+  .snack-bar-loading {
+    background-color: #333;
+    color: #fff;
+  }
+  ::ng-deep .mat-mdc-snack-bar-container{
+    --mdc-snackbar-container-color: #dfe7e1 ;
+    --mdc-snackbar-supporting-text-color: #000;
+  }
