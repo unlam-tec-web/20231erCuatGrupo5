@@ -37,6 +37,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
 import { PagoComponent } from './components/pago/pago.component';
+import { AccountVerificationComponent } from './components/account-verification/account-verification.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { PagoComponent } from './components/pago/pago.component';
     CategoryComponent,
     PedidoComponent,
     DetailProductComponent,
-    PagoComponent
+    PagoComponent,
+    AccountVerificationComponent
   ],
   imports: [   
   FormsModule,

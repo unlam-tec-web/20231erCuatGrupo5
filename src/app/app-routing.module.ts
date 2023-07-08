@@ -8,6 +8,7 @@ import { ProductComponent } from './components/product/product.component';
 import { CategoryComponent } from './components/category/category.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
+import { AccountVerificationComponent } from './components/account-verification/account-verification.component';
 
 //rutas de navegacion
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   //{ path: 'pedido', component: PedidoComponent}
   { path: 'pedido',component: PedidoComponent},
   { path: 'products/:id', component: DetailProductComponent},
+  { path:'accountVerification',component: AccountVerificationComponent},
     //ruta 404
   {path:'**',component:PageNotFoundComponent}
 

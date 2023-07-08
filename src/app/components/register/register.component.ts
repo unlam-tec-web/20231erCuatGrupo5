@@ -7,6 +7,7 @@ import { UserService } from 'src/service/user.service';
 import { User } from 'src/models/User';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,6 +17,7 @@ export class RegisterComponent implements OnInit{
   formRegistro:FormGroup;
   formCode:FormGroup;
   mostrarFormularioCodigo:boolean=false;
+  errorMessage : string = '';
 
   constructor(private router: Router, 
     private dialog: MatDialog,
@@ -32,9 +34,9 @@ export class RegisterComponent implements OnInit{
     email: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9.!#\\$%&\'\\*+/=?\\^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]], 
     password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\-\.$!%*?&])([A-Za-z\d\-\.$!%*?&]|[^ ]){8,15}$/)]]
   })
-    this.formCode = this.formBuilder.group({
-      code:['',[Validators.required,Validators.pattern('^[0-9]{6}$'),Validators.maxLength(6)]]
-    })
+  this.formCode = this.formBuilder.group({
+    code:['',[Validators.required,Validators.pattern('^[0-9]{6}$'),Validators.maxLength(6)]]
+  })
   }
 
   IrAInicio() {
@@ -50,9 +52,16 @@ export class RegisterComponent implements OnInit{
       email : this.formRegistro.get('email').value,
       name : this.formRegistro.get('name').value
     }
-    this.userService.register(user);
-    this.formRegistro.reset();
-    this.mostrarFormularioCodigo=true;
+    this.userService.register(user).subscribe(
+      () => {
+        this.formRegistro.reset();
+        this.mostrarFormularioCodigo = true;
+      },
+      error => {
+        this.errorMessage = error.error.message;
+      }
+    );
+    
     
   }
   validarCodigo() {
@@ -60,21 +69,23 @@ export class RegisterComponent implements OnInit{
       return;
     }
     const code = this.formCode.get('code').value;
-    this.userService.verifyCode(code);
-    // Realizar las acciones necesarias para validar el código de validación
-    // ...
-    // Reiniciar el formulario del código de validación y ocultarlo
-    this.userService.deleteDataUser();
-    // Mostrar el aviso con un tiempo de espera de 3 segundos
-    let snackBarRef = this.snackBar.open('Usuario verificado exitosamente. Serás redirigido al home.', '', {
-      duration : 3000,
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-    });
-    snackBarRef.afterDismissed().subscribe(() => {
-      this.mostrarFormularioCodigo = false;
-      this.IrAInicio();
-    });
+    this.userService.verifyCode(code).subscribe(
+      () => {
+        this.userService.deleteDataUser();
+        let snackBarRef = this.snackBar.open('Usuario verificado exitosamente. Serás redirigido al home.', '', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
+        snackBarRef.afterDismissed().subscribe(() => {
+          this.mostrarFormularioCodigo = false;
+          this.IrAInicio();
+        });
+      },
+      error => {
+        this.errorMessage = error.error.message;
+      }
+    );
   }
   
 }
